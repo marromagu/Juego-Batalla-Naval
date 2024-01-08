@@ -23,6 +23,7 @@ public final class ConexionCliente {
     private DataInputStream flujo_entrada;
     private DataOutputStream flujo_salida;
     private ObjectInputStream objeto_entrada;
+    private HashMap<Integer, String> listaUsuario;
 
     public static ConexionCliente getCliente() {
         if (miCliente == null) {
@@ -41,7 +42,7 @@ public final class ConexionCliente {
         try {
             // Conectar al servidor
             socketCliente = new Socket(HOST, PUERTO);
-
+            listaUsuario = new HashMap<>();
             // Inicializar flujos de entrada y salida para la comunicación con el servidor
             flujo_entrada = new DataInputStream(socketCliente.getInputStream());
             flujo_salida = new DataOutputStream(socketCliente.getOutputStream());
@@ -58,8 +59,9 @@ public final class ConexionCliente {
             //Mandamos al servidor el Usuario y la contraseña
             flujo_salida.writeUTF(usuario);
             flujo_salida.writeInt(contraseña);
+            listaUsuario = (HashMap<Integer, String>) recibirObjeto();
+            System.out.println(listaUsuario);
             misDatos = (DatosJugador) recibirObjeto();
-            System.out.println(misDatos.toString());
             return true;
         } catch (IOException ex) {
             System.out.println("--> ERROR: mandarDatosLogin: " + ex.getMessage());
@@ -113,8 +115,12 @@ public final class ConexionCliente {
         }
     }
     public void actualizarListaDePartidas(){
-        misDatos.setListaPartidaTermindas((HashMap<Integer, String>) recibirObjeto());
-        System.out.println("--Actualizando");
+        try {
+            flujo_salida.writeInt(4);
+            misDatos.setListaPartidaTermindas((HashMap<Integer, String>) recibirObjeto());
+        } catch (IOException ex) {
+            Logger.getLogger(ConexionCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     // Método para recibir un objeto por socket
     public Object recibirObjeto() {
@@ -136,6 +142,7 @@ public final class ConexionCliente {
 
     public void cerrarConexiones() {
         try {
+            listaUsuario.remove(misDatos.getIdJugador());
             // Cierra la conexión del cliente y otros recursos
             if (socketCliente != null && !socketCliente.isClosed()) {
                 socketCliente.close();
@@ -152,6 +159,14 @@ public final class ConexionCliente {
         } catch (IOException e) {
             System.out.println("--> Error al cerrar conexiones: " + e.getMessage());
         }
+    }
+
+    public HashMap<Integer, String> getListaUsuario() {
+        return listaUsuario;
+    }
+
+    public void setListaUsuario(HashMap<Integer, String> listaUsuario) {
+        this.listaUsuario = listaUsuario;
     }
 
 }

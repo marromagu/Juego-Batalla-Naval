@@ -5,6 +5,7 @@
 package Ventanas;
 
 import App.Ventana_Principal;
+import java.util.HashMap;
 
 /**
  *
@@ -21,6 +22,7 @@ public class Ventana_Opcion1_EP extends javax.swing.JPanel {
         initComponents();
         this.miApp = app; // Asigna la referencia de Ventana_Principal
         initializeButton();
+        mostarListaDePartidas();
     }
 
     /**
@@ -34,22 +36,57 @@ public class Ventana_Opcion1_EP extends javax.swing.JPanel {
 
         BackGround = new javax.swing.JPanel();
         jButtonBack = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jTextField_IdJugador = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jButtonJugar = new javax.swing.JButton();
 
         jButtonBack.setText("Atras");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jLabel1.setText("Id del Jugador");
+
+        jButtonJugar.setText("Jugar");
+        jButtonJugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonJugarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout BackGroundLayout = new javax.swing.GroupLayout(BackGround);
         BackGround.setLayout(BackGroundLayout);
         BackGroundLayout.setHorizontalGroup(
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
-                .addGap(0, 360, Short.MAX_VALUE)
-                .addComponent(jButtonBack))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BackGroundLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonBack))
+                    .addGroup(BackGroundLayout.createSequentialGroup()
+                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField_IdJugador)
+                            .addComponent(jButtonJugar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 81, Short.MAX_VALUE))))
         );
         BackGroundLayout.setVerticalGroup(
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
-                .addGap(0, 276, Short.MAX_VALUE)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField_IdJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonJugar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
                 .addComponent(jButtonBack))
+            .addComponent(jScrollPane1)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -64,10 +101,19 @@ public class Ventana_Opcion1_EP extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonJugarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonJugarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackGround;
     private javax.swing.JButton jButtonBack;
+    private javax.swing.JButton jButtonJugar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField_IdJugador;
     // End of variables declaration//GEN-END:variables
 
     private void initializeButton() {
@@ -75,5 +121,14 @@ public class Ventana_Opcion1_EP extends javax.swing.JPanel {
             // Vuelve a la ventana VentanaOpciones
             miApp.showOpcionesPanel();
         });
+    }
+
+    private void mostarListaDePartidas() {
+        jTextArea1.setText("");
+        HashMap<Integer, String> usuario = miApp.getMiCliente().getListaUsuario();
+        for (HashMap.Entry<Integer, String> partida : usuario.entrySet()) {
+            jTextArea1.append("Id: " + partida.getValue() + " Nombre: " + partida.getValue() + "\n");
+        }
+
     }
 }

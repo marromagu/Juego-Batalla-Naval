@@ -133,7 +133,7 @@ public class Ventana_Opcion2_VerT extends javax.swing.JPanel {
 
     private void mostarListaDePartidas() {
         listaDePartidasJTextArea.setText("");
-        //miApp.getMiCliente().actualizarListaDePartidas();
+        miApp.getMiCliente().actualizarListaDePartidas();
         HashMap<Integer, String> paritdas = miApp.getMiCliente().getMisDatos().getListaPartidaTermindas();
         for (HashMap.Entry<Integer, String> partida : paritdas.entrySet()) {
             listaDePartidasJTextArea.append(partida.getValue() + "\n");

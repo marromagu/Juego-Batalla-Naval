@@ -15,6 +15,7 @@ public class Ventana_Opcion2_VerT_Repeticion extends javax.swing.JPanel {
 
     private final Ventana_Principal miApp; // Agrega una referencia a la instancia de Ventana_Principal
     private final int id;
+    private int i = 0;
 
     /**
      * Creates new form VentanaOpcionesEmpezarPartida
@@ -45,12 +46,20 @@ public class Ventana_Opcion2_VerT_Repeticion extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
         jButtonBack.setText("Atras");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
+
+        jToggleButton1.setText("Siguiente");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout BackGroundLayout = new javax.swing.GroupLayout(BackGround);
         BackGround.setLayout(BackGroundLayout);
@@ -62,20 +71,24 @@ public class Ventana_Opcion2_VerT_Repeticion extends javax.swing.JPanel {
             .addGroup(BackGroundLayout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(BackGroundLayout.createSequentialGroup()
+                        .addComponent(jToggleButton1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         BackGroundLayout.setVerticalGroup(
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
-                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(BackGroundLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(BackGroundLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jToggleButton1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonBack))
         );
 
@@ -91,6 +104,17 @@ public class Ventana_Opcion2_VerT_Repeticion extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        ArrayList<String> disparosRepeticion = miApp.getMiCliente().repeticion(id);
+        if (i < disparosRepeticion.size()) {
+            // Muestra el elemento actual y pasa al siguiente índice
+            jTextArea1.append(disparosRepeticion.get(i++).toString() + "\n");
+        } else {
+            // Muestra un mensaje cuando se alcanza el final del array
+            jTextArea1.append("Fin de la lista\n");
+        }
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackGround;
@@ -98,6 +122,7 @@ public class Ventana_Opcion2_VerT_Repeticion extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 
     private void initializeButton() {
@@ -108,10 +133,6 @@ public class Ventana_Opcion2_VerT_Repeticion extends javax.swing.JPanel {
     }
 
     private void mostarListaDeDisparos() {
-        jTextArea1.setText("");
-        ArrayList<String> disparosRepeticion = miApp.getMiCliente().repeticion(id);
-        for (Object disparos : disparosRepeticion) {
-            jTextArea1.append((String) disparos + "\n");
-        }
+        jTextArea1.setText("-Pulsa Siguiente-\n");
     }
 }
