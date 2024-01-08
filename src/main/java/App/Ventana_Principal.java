@@ -4,7 +4,7 @@
  */
 package App;
 
-import Jugador.ConexionCliente;
+import Cliente.ConexionCliente;
 import Ventanas.Ventana_Login;
 import Ventanas.Ventana_Opciones;
 import java.awt.BorderLayout;
