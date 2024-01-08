@@ -22,7 +22,7 @@ public class Ventana_Opcion1_EP extends javax.swing.JPanel {
         initComponents();
         this.miApp = app; // Asigna la referencia de Ventana_Principal
         initializeButton();
-        mostarListaDePartidas();
+        mostarListaDeJugadores();
     }
 
     /**
@@ -102,7 +102,9 @@ public class Ventana_Opcion1_EP extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonJugarActionPerformed
-        // TODO add your handling code here:
+        int id_jugador = Integer.parseInt(jTextField_IdJugador.getText());
+        int id_partida = miApp.getMiCliente().crearNuevaPartida(id_jugador);
+        miApp.ShowJPanel(new Ventana_Opcion1_EP_Jugar(miApp, id_partida));
     }//GEN-LAST:event_jButtonJugarActionPerformed
 
 
@@ -123,11 +125,11 @@ public class Ventana_Opcion1_EP extends javax.swing.JPanel {
         });
     }
 
-    private void mostarListaDePartidas() {
+    private void mostarListaDeJugadores() {
         jTextArea1.setText("");
         HashMap<Integer, String> usuario = miApp.getMiCliente().getListaUsuario();
         for (HashMap.Entry<Integer, String> partida : usuario.entrySet()) {
-            jTextArea1.append("Id: " + partida.getValue() + " Nombre: " + partida.getValue() + "\n");
+            jTextArea1.append(partida.getValue() + "\n");
         }
 
     }

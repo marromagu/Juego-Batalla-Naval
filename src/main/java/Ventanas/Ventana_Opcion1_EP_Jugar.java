@@ -5,6 +5,7 @@
 package Ventanas;
 
 import App.Ventana_Principal;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -14,15 +15,18 @@ import java.util.HashMap;
 public class Ventana_Opcion1_EP_Jugar extends javax.swing.JPanel {
 
     private Ventana_Principal miApp; // Agrega una referencia a la instancia de Ventana_Principal
+    private int id_partida;
 
     /**
      * Creates new form VentanaOpcionesEmpezarPartida
      */
-    public Ventana_Opcion1_EP_Jugar(Ventana_Principal app) {
+    public Ventana_Opcion1_EP_Jugar(Ventana_Principal app, int id_partida) {
         initComponents();
         this.miApp = app; // Asigna la referencia de Ventana_Principal
+        this.id_partida = id_partida;
         initializeButton();
         mostarLogDeDisparos();
+
     }
 
     /**
@@ -114,7 +118,10 @@ public class Ventana_Opcion1_EP_Jugar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonDispararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDispararActionPerformed
-        // TODO add your handling code here:
+        int x = Integer.parseInt(jTextField_X.getText());
+        int y = Integer.parseInt(jTextField_Y.getText());
+        miApp.getMiCliente().hacerDisparo(id_partida, x, y);
+
     }//GEN-LAST:event_jButtonDispararActionPerformed
 
 
@@ -139,9 +146,9 @@ public class Ventana_Opcion1_EP_Jugar extends javax.swing.JPanel {
 
     private void mostarLogDeDisparos() {
         jTextArea1.setText("");
-        HashMap<Integer, String> usuario = miApp.getMiCliente().getListaUsuario();
-        for (HashMap.Entry<Integer, String> partida : usuario.entrySet()) {
-            jTextArea1.append("Id: " + partida.getValue() + " Nombre: " + partida.getValue() + "\n");
+        ArrayList<String> disparosRepeticion = miApp.getMiCliente().repeticion(id_partida);
+        for (String string : disparosRepeticion) {
+            jTextArea1.setText(string);
         }
 
     }

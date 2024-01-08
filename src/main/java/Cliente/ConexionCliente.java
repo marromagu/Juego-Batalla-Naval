@@ -114,7 +114,8 @@ public final class ConexionCliente {
 
         }
     }
-    public void actualizarListaDePartidas(){
+
+    public void actualizarListaDePartidas() {
         try {
             flujo_salida.writeInt(4);
             misDatos.setListaPartidaTermindas((HashMap<Integer, String>) recibirObjeto());
@@ -122,6 +123,20 @@ public final class ConexionCliente {
             Logger.getLogger(ConexionCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public int crearNuevaPartida(int id_Jugador2) {
+        int id_partida = 0;
+        try {
+            flujo_salida.writeInt(5);
+            flujo_salida.writeInt(misDatos.getIdJugador());
+            flujo_salida.writeInt(id_Jugador2);
+            id_partida = flujo_entrada.readInt();
+        } catch (IOException ex) {
+            Logger.getLogger(ConexionCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return id_partida;
+    }
+
     // Método para recibir un objeto por socket
     public Object recibirObjeto() {
         try {
