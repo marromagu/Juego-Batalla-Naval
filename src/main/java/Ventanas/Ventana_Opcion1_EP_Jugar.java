@@ -4,6 +4,7 @@
  */
 package Ventanas;
 
+import App.AppModificada;
 import App.Ventana_Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,13 +15,13 @@ import java.util.HashMap;
  */
 public class Ventana_Opcion1_EP_Jugar extends javax.swing.JPanel {
 
-    private Ventana_Principal miApp; // Agrega una referencia a la instancia de Ventana_Principal
+    private AppModificada miApp; // Agrega una referencia a la instancia de Ventana_Principal
     private int id_partida;
 
     /**
      * Creates new form VentanaOpcionesEmpezarPartida
      */
-    public Ventana_Opcion1_EP_Jugar(Ventana_Principal app, int id_partida) {
+    public Ventana_Opcion1_EP_Jugar(AppModificada app, int id_partida) {
         initComponents();
         this.miApp = app; // Asigna la referencia de Ventana_Principal
         this.id_partida = id_partida;
@@ -71,12 +72,9 @@ public class Ventana_Opcion1_EP_Jugar extends javax.swing.JPanel {
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BackGroundLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonBack))
-                    .addGroup(BackGroundLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jTextField_X)
@@ -85,7 +83,11 @@ public class Ventana_Opcion1_EP_Jugar extends javax.swing.JPanel {
                             .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jTextField_Y, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addContainerGap(91, Short.MAX_VALUE))))
+                        .addContainerGap(91, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonBack)
+                        .addContainerGap())))
         );
         BackGroundLayout.setVerticalGroup(
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,8 +102,9 @@ public class Ventana_Opcion1_EP_Jugar extends javax.swing.JPanel {
                 .addComponent(jTextField_Y, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonDisparar)
-                .addGap(88, 88, 88)
-                .addComponent(jButtonBack))
+                .addGap(82, 82, 82)
+                .addComponent(jButtonBack)
+                .addContainerGap())
             .addComponent(jScrollPane1)
         );
 

@@ -32,75 +32,140 @@ public class Ventana_Opciones extends javax.swing.JPanel {
     private void initComponents() {
 
         Fondo = new javax.swing.JPanel();
-        verPartidaTerminadaBoton = new javax.swing.JButton();
+        MenuLateral = new javax.swing.JPanel();
         empezarPartidaBoton = new javax.swing.JButton();
+        verPartidaTerminadaBoton = new javax.swing.JButton();
         verPartidaMiTurno = new javax.swing.JButton();
         verPartidaSuTurno = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        Salir = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
-        verPartidaTerminadaBoton.setText("Ver partidas ya terminadas");
-        verPartidaTerminadaBoton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verPartidaTerminadaBotonActionPerformed(evt);
-            }
-        });
+        setPreferredSize(new java.awt.Dimension(1200, 800));
 
+        Fondo.setBackground(new java.awt.Color(0, 153, 153));
+        Fondo.setPreferredSize(new java.awt.Dimension(1200, 800));
+
+        MenuLateral.setBackground(new java.awt.Color(0, 102, 102));
+        MenuLateral.setPreferredSize(new java.awt.Dimension(300, 800));
+
+        empezarPartidaBoton.setBackground(new java.awt.Color(0, 255, 204));
+        empezarPartidaBoton.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         empezarPartidaBoton.setText("Empezar Partida");
+        empezarPartidaBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         empezarPartidaBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empezarPartidaBotonActionPerformed(evt);
             }
         });
 
-        verPartidaMiTurno.setText("Ver resto de partidas sin terminar (mi turno)");
+        verPartidaTerminadaBoton.setBackground(new java.awt.Color(0, 255, 204));
+        verPartidaTerminadaBoton.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        verPartidaTerminadaBoton.setText("Ver partidas ya terminadas");
+        verPartidaTerminadaBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        verPartidaTerminadaBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verPartidaTerminadaBotonActionPerformed(evt);
+            }
+        });
+
+        verPartidaMiTurno.setBackground(new java.awt.Color(0, 255, 204));
+        verPartidaMiTurno.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        verPartidaMiTurno.setText("Ver partidas sin terminar (mi turno)");
+        verPartidaMiTurno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         verPartidaMiTurno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verPartidaMiTurnoActionPerformed(evt);
             }
         });
 
-        verPartidaSuTurno.setText("Ver resto de partidas sin terminar (su turno)");
+        verPartidaSuTurno.setBackground(new java.awt.Color(0, 255, 204));
+        verPartidaSuTurno.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        verPartidaSuTurno.setText("Ver partidas sin terminar (su turno)");
+        verPartidaSuTurno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         verPartidaSuTurno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verPartidaSuTurnoActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Salir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Salir.setBackground(new java.awt.Color(0, 255, 204));
+        Salir.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        Salir.setText("Salir");
+        Salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                SalirActionPerformed(evt);
             }
         });
+
+        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout MenuLateralLayout = new javax.swing.GroupLayout(MenuLateral);
+        MenuLateral.setLayout(MenuLateralLayout);
+        MenuLateralLayout.setHorizontalGroup(
+            MenuLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(empezarPartidaBoton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(verPartidaTerminadaBoton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(verPartidaMiTurno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(verPartidaSuTurno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(MenuLateralLayout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(MenuLateralLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Salir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        MenuLateralLayout.setVerticalGroup(
+            MenuLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MenuLateralLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66)
+                .addComponent(empezarPartidaBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(verPartidaTerminadaBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(verPartidaMiTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(verPartidaSuTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(311, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 941, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout FondoLayout = new javax.swing.GroupLayout(Fondo);
         Fondo.setLayout(FondoLayout);
         FondoLayout.setHorizontalGroup(
             FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FondoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(empezarPartidaBoton)
-                    .addComponent(verPartidaTerminadaBoton)
-                    .addComponent(verPartidaMiTurno)
-                    .addComponent(verPartidaSuTurno)
-                    .addComponent(jButton1))
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addComponent(MenuLateral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         FondoLayout.setVerticalGroup(
             FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(MenuLateral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(FondoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(empezarPartidaBoton)
-                .addGap(18, 18, 18)
-                .addComponent(verPartidaTerminadaBoton)
-                .addGap(18, 18, 18)
-                .addComponent(verPartidaMiTurno)
-                .addGap(18, 18, 18)
-                .addComponent(verPartidaSuTurno)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -116,7 +181,7 @@ public class Ventana_Opciones extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void empezarPartidaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empezarPartidaBotonActionPerformed
-        miApp.ShowJPanel(new Ventana_Opcion1_EP(miApp));
+        miApp.ShowJPanel(new Ventana_EmpezarPartida(miApp));
     }//GEN-LAST:event_empezarPartidaBotonActionPerformed
 
     private void verPartidaTerminadaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verPartidaTerminadaBotonActionPerformed
@@ -131,16 +196,20 @@ public class Ventana_Opciones extends javax.swing.JPanel {
         miApp.ShowJPanel(new Ventana_Opcion4_VerSu(miApp));
     }//GEN-LAST:event_verPartidaSuTurnoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         miApp.getMiCliente().cerrarConexiones();
         System.exit(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_SalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Fondo;
+    private javax.swing.JPanel MenuLateral;
+    private javax.swing.JButton Salir;
     private javax.swing.JButton empezarPartidaBoton;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton verPartidaMiTurno;
     private javax.swing.JButton verPartidaSuTurno;
     private javax.swing.JButton verPartidaTerminadaBoton;
