@@ -4,15 +4,15 @@
  */
 package Ventanas;
 
-import App.Ventana_Principal;
+import App.AppModificada;
 
 /**
  *
  * @author mario
  */
-public class Ventana_Opcion3_VerMi_Disparo extends javax.swing.JPanel {
+public class Ventana_VerPartidaMiTurnoDisparar extends javax.swing.JPanel {
 
-    private final Ventana_Principal miApp; // Agrega una referencia a la instancia de Ventana_Principal
+    private final AppModificada miApp; // Agrega una referencia a la instancia de Ventana_Principal
     private int id;
 
     /**
@@ -20,7 +20,7 @@ public class Ventana_Opcion3_VerMi_Disparo extends javax.swing.JPanel {
      * @param app
      * @param id_partida
      */
-    public Ventana_Opcion3_VerMi_Disparo(Ventana_Principal app, String id_partida) {
+    public Ventana_VerPartidaMiTurnoDisparar(AppModificada app, String id_partida) {
         initComponents();
         this.miApp = app; // Asigna la referencia de Ventana_Principal
         initializeButton();
@@ -123,7 +123,7 @@ public class Ventana_Opcion3_VerMi_Disparo extends javax.swing.JPanel {
         int coordenadaX = Integer.parseInt(CoordenadasXJTextField.getText());
         int coordenadaY = Integer.parseInt(CoordenadasYJTextField.getText());
         miApp.getMiCliente().hacerDisparo(id, coordenadaX, coordenadaY);
-        miApp.ShowJPanel(new Ventana_Opcion3_VerMi(miApp));
+        miApp.ShowJPanel(new Ventana_VerPartidaMiTurno(miApp));
     }//GEN-LAST:event_DispararJButtonActionPerformed
 
 
@@ -141,7 +141,7 @@ public class Ventana_Opcion3_VerMi_Disparo extends javax.swing.JPanel {
     private void initializeButton() {
         jButtonBack.addActionListener((java.awt.event.ActionEvent evt) -> {
             // Vuelve a la ventana Opcion 2 Ver Partida
-            miApp.ShowJPanel(new Ventana_Opcion3_VerMi(miApp));
+            miApp.ShowJPanel(new Ventana_VerPartidaMiTurno(miApp));
         });
     }
 }

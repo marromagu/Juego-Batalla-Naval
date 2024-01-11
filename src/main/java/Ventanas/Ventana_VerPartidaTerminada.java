@@ -4,28 +4,29 @@
  */
 package Ventanas;
 
-import App.Ventana_Principal;
+import App.AppModificada;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author mario
  */
-public class Ventana_Opcion2_VerT extends javax.swing.JPanel {
+public class Ventana_VerPartidaTerminada extends javax.swing.JPanel {
 
-    private Ventana_Principal miApp; // Agrega una referencia a la instancia de Ventana_Principal
+    private AppModificada miApp; // Agrega una referencia a la instancia de Ventana_Principal
 
     /**
      * Creates new form VentanaOpcionesEmpezarPartida
      *
      * @param app
      */
-    public Ventana_Opcion2_VerT(Ventana_Principal app) {
+    public Ventana_VerPartidaTerminada(AppModificada app) {
         initComponents();
-        this.miApp = app; // Asigna la referencia de Ventana_Principal
-        initializeButton();
-        mostarListaDePartidas();
+        this.miApp = app; // Asigna la referencia de Ventana_Principal;
+        llenarTablaConDatos();
     }
 
     /**
@@ -38,18 +39,11 @@ public class Ventana_Opcion2_VerT extends javax.swing.JPanel {
     private void initComponents() {
 
         BackGround = new javax.swing.JPanel();
-        jButtonBack = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listaDePartidasJTextArea = new javax.swing.JTextArea();
         id_ParitdaJLabel = new javax.swing.JLabel();
         id_PartidaJTextField = new javax.swing.JTextField();
         verJButton = new javax.swing.JButton();
-
-        jButtonBack.setText("Atras");
-
-        listaDePartidasJTextArea.setColumns(20);
-        listaDePartidasJTextArea.setRows(5);
-        jScrollPane1.setViewportView(listaDePartidasJTextArea);
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TablaPartidas = new javax.swing.JTable();
 
         id_ParitdaJLabel.setText("Id Paritda");
 
@@ -60,16 +54,39 @@ public class Ventana_Opcion2_VerT extends javax.swing.JPanel {
             }
         });
 
+        TablaPartidas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id Partida", "Jugador 1", "Jugador 2", "Ganador", "Ultimo Turno"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(TablaPartidas);
+
         javax.swing.GroupLayout BackGroundLayout = new javax.swing.GroupLayout(BackGround);
         BackGround.setLayout(BackGroundLayout);
         BackGroundLayout.setHorizontalGroup(
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
-                .addGap(0, 360, Short.MAX_VALUE)
-                .addComponent(jButtonBack))
             .addGroup(BackGroundLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(id_ParitdaJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(id_PartidaJTextField))
@@ -79,20 +96,17 @@ public class Ventana_Opcion2_VerT extends javax.swing.JPanel {
         );
         BackGroundLayout.setVerticalGroup(
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
+            .addGroup(BackGroundLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(BackGroundLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(BackGroundLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(id_ParitdaJLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(id_PartidaJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(verJButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(jButtonBack))
+                            .addComponent(verJButton))))
+                .addGap(0, 19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -110,33 +124,42 @@ public class Ventana_Opcion2_VerT extends javax.swing.JPanel {
     private void verJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verJButtonActionPerformed
         String id_partida;
         id_partida = id_PartidaJTextField.getText();
-        miApp.ShowJPanel(new Ventana_Opcion2_VerT_Repeticion(miApp, id_partida));
+        miApp.ShowJPanel(new Ventana_VerPartidaTerminadaRepeticion(miApp, id_partida));
     }//GEN-LAST:event_verJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackGround;
+    private javax.swing.JTable TablaPartidas;
     private javax.swing.JLabel id_ParitdaJLabel;
     private javax.swing.JTextField id_PartidaJTextField;
-    private javax.swing.JButton jButtonBack;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea listaDePartidasJTextArea;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton verJButton;
     // End of variables declaration//GEN-END:variables
 
-    private void initializeButton() {
-        jButtonBack.addActionListener((java.awt.event.ActionEvent evt) -> {
-            // Vuelve a la ventana VentanaOpciones
-            miApp.showOpcionesPanel();
-        });
-    }
+    private void llenarTablaConDatos() {
+        DefaultTableModel model = (DefaultTableModel) TablaPartidas.getModel();
+        model.setRowCount(0); // Limpia la tabla antes de agregar nuevos datos
 
-    private void mostarListaDePartidas() {
-        listaDePartidasJTextArea.setText("");
-        miApp.getMiCliente().actualizarListaDePartidas();
-        HashMap<Integer, String> paritdas = miApp.getMiCliente().getMisDatos().getListaPartidaTermindas();
-        for (HashMap.Entry<Integer, String> partida : paritdas.entrySet()) {
-            listaDePartidasJTextArea.append(partida.getValue() + "\n");
+        // Obtén la lista de partidas terminadas desde la aplicación
+        HashMap<Integer, String> partidas = miApp.getMiCliente().getMisDatos().getListaPartidaTermindas();
+
+        // Itera sobre la lista y agrega cada partida a la tabla
+        for (HashMap.Entry<Integer, String> entrada : partidas.entrySet()) {
+            Scanner sc = new Scanner(entrada.getValue());
+            sc.useDelimiter(";");
+            // Verifica la existencia de los elementos antes de acceder a ellos
+
+            int idPartida = sc.nextInt();
+            String nombreJugador1 = sc.next();
+            String nombreJugador2 = sc.next();
+            String nombreGanador = sc.next();
+            String nombreUltimoTurno = sc.next();
+
+            // Agrega los datos a la tabla
+            model.addRow(new Object[]{idPartida, nombreJugador1, nombreJugador2, nombreGanador, nombreUltimoTurno});
+
+            sc.close();
         }
     }
 }

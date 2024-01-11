@@ -4,32 +4,27 @@
  */
 package Ventanas;
 
-import App.Ventana_Principal;
+import App.AppModificada;
 import java.util.ArrayList;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author mario
  */
-public class Ventana_Opcion2_VerT_Repeticion extends javax.swing.JPanel {
+public class Ventana_VerPartidaSuTurno extends javax.swing.JPanel {
 
-    private final Ventana_Principal miApp; // Agrega una referencia a la instancia de Ventana_Principal
-    private final int id;
-    private int i = 0;
+    private AppModificada miApp; // Agrega una referencia a la instancia de Ventana_Principal
 
     /**
      * Creates new form VentanaOpcionesEmpezarPartida
-     *
-     * @param app
-     * @param id_partida
      */
-    public Ventana_Opcion2_VerT_Repeticion(Ventana_Principal app, String id_partida) {
+    public Ventana_VerPartidaSuTurno(AppModificada app) {
         initComponents();
         this.miApp = app; // Asigna la referencia de Ventana_Principal
         initializeButton();
-        jLabel1.setText("Id Partida: " + id_partida);
-        id = Integer.parseInt(id_partida);
-        mostarListaDeDisparos();
+        mostarListaDePartidas();
     }
 
     /**
@@ -46,7 +41,8 @@ public class Ventana_Opcion2_VerT_Repeticion extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         jButtonBack.setText("Atras");
 
@@ -54,10 +50,12 @@ public class Ventana_Opcion2_VerT_Repeticion extends javax.swing.JPanel {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jToggleButton1.setText("Siguiente");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setText("Id Paritda");
+
+        jButton1.setText("Rendirse");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -71,23 +69,25 @@ public class Ventana_Opcion2_VerT_Repeticion extends javax.swing.JPanel {
             .addGroup(BackGroundLayout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(BackGroundLayout.createSequentialGroup()
-                        .addComponent(jToggleButton1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         BackGroundLayout.setVerticalGroup(
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
-                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
                     .addGroup(BackGroundLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jToggleButton1))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonBack))
         );
@@ -104,35 +104,43 @@ public class Ventana_Opcion2_VerT_Repeticion extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        ArrayList<String> disparosRepeticion = miApp.getMiCliente().repeticion(id);
-        if (i < disparosRepeticion.size()) {
-            // Muestra el elemento actual y pasa al siguiente índice
-            jTextArea1.append(disparosRepeticion.get(i++).toString() + "\n");
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int id_partida = Integer.parseInt(jTextField1.getText());
+        boolean rendicionExitosa = miApp.getMiCliente().solicitarRendirse(id_partida);
+
+        if (rendicionExitosa) {
+            JOptionPane.showMessageDialog(this, "Rendición exitosa", "Éxito", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            // Muestra un mensaje cuando se alcanza el final del array
-            jTextArea1.append("Fin de la lista\n");
+            JOptionPane.showMessageDialog(this, "No se pudo realizar la rendición", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+        jTextField1.setText("");
+        mostarListaDePartidas();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackGround;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonBack;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
     private void initializeButton() {
         jButtonBack.addActionListener((java.awt.event.ActionEvent evt) -> {
-            // Vuelve a la ventana Opcion 2 Ver Partida
-            miApp.ShowJPanel(new Ventana_Opcion2_VerT(miApp));
+            // Vuelve a la ventana VentanaOpciones
+            miApp.ShowJPanel(new Ventana_VerPartidaSinTerminar(miApp));
         });
     }
 
-    private void mostarListaDeDisparos() {
-        jTextArea1.setText("-Pulsa Siguiente-\n");
+    private void mostarListaDePartidas() {
+        jTextArea1.setText("");
+        HashMap<Integer, String> partidas = miApp.getMiCliente().getMisDatos().getListaPartidasSuTurno();
+        for (HashMap.Entry<Integer, String> partida : partidas.entrySet()) {
+            jTextArea1.append(partida.getValue() + "\n");
+        }
+
     }
 }

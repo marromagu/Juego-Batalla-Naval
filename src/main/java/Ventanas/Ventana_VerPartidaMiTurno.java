@@ -4,7 +4,7 @@
  */
 package Ventanas;
 
-import App.Ventana_Principal;
+import App.AppModificada;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,14 +12,14 @@ import java.util.Map;
  *
  * @author mario
  */
-public class Ventana_Opcion3_VerMi extends javax.swing.JPanel {
+public class Ventana_VerPartidaMiTurno extends javax.swing.JPanel {
 
-    private Ventana_Principal miApp; // Agrega una referencia a la instancia de Ventana_Principal
+    private AppModificada miApp; // Agrega una referencia a la instancia de Ventana_Principal
 
     /**
      * Creates new form VentanaOpcionesEmpezarPartida
      */
-    public Ventana_Opcion3_VerMi(Ventana_Principal app) {
+    public Ventana_VerPartidaMiTurno(AppModificada app) {
         initComponents();
         this.miApp = app; // Asigna la referencia de Ventana_Principal
         initializeButton();
@@ -106,7 +106,7 @@ public class Ventana_Opcion3_VerMi extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String id_partida;
         id_partida = jTextField1.getText();
-        miApp.ShowJPanel(new Ventana_Opcion3_VerMi_Disparo(miApp, id_partida));
+        miApp.ShowJPanel(new Ventana_VerPartidaMiTurnoDisparar(miApp, id_partida));
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -123,7 +123,7 @@ public class Ventana_Opcion3_VerMi extends javax.swing.JPanel {
     private void initializeButton() {
         jButtonBack.addActionListener((java.awt.event.ActionEvent evt) -> {
             // Vuelve a la ventana VentanaOpciones
-            miApp.showOpcionesPanel();
+           miApp.ShowJPanel(new Ventana_VerPartidaSinTerminar(miApp));
         });
     }
 

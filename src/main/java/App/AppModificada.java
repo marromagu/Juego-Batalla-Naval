@@ -5,9 +5,7 @@
 package App;
 
 import Cliente.ConexionCliente;
-import Ventanas.Ventana_EmpezarPartida;
-import Ventanas.Ventana_Opcion2_VerT;
-import Ventanas.Ventana_VerPartidaSinTerminar;
+import Ventanas.*;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatAtomOneDarkIJTheme;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -31,6 +29,8 @@ public class AppModificada extends javax.swing.JFrame {
     public AppModificada() {
         initComponents();
         initStyle();
+        initShowJPanel();
+
     }
 
     /**
@@ -63,7 +63,7 @@ public class AppModificada extends javax.swing.JFrame {
         backgroun.setBackground(new java.awt.Color(255, 255, 255));
         backgroun.setPreferredSize(new java.awt.Dimension(1020, 640));
 
-        menu.setBackground(new java.awt.Color(204, 41, 41));
+        menu.setBackground(new java.awt.Color(41, 51, 41));
         menu.setPreferredSize(new java.awt.Dimension(270, 640));
 
         Separador.setBackground(new java.awt.Color(255, 255, 255));
@@ -121,16 +121,12 @@ public class AppModificada extends javax.swing.JFrame {
             }
         });
 
-        Icono.setIcon(new javax.swing.ImageIcon("C:\\Users\\DAW_M\\Documents\\NetBeansProjects\\Juego-Batalla-Naval\\src\\main\\img\\barco-pirata (1).png")); // NOI18N
+        Icono.setIcon(new javax.swing.ImageIcon("C:\\Users\\mario\\Documents\\0A_DAM-III\\1. Hundir La Flota MRA\\Batalla_Naval_Cliente\\src\\main\\img\\barco-pirata (1).png")); // NOI18N
 
         javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
         menu.setLayout(menuLayout);
         menuLayout.setHorizontalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuLayout.createSequentialGroup()
-                .addGap(109, 109, 109)
-                .addComponent(Icono)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(menuLayout.createSequentialGroup()
                 .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(VerPartidasTerminadasBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -141,13 +137,17 @@ public class AppModificada extends javax.swing.JFrame {
                     .addComponent(SalirBoton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(VerPartidasSinTerminarBoton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(menuLayout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(Icono)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         menuLayout.setVerticalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(Icono)
-                .addGap(48, 48, 48)
+                .addGap(17, 17, 17)
+                .addComponent(Icono, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(Separador, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64)
                 .addComponent(EmpezarPartidaBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -155,27 +155,27 @@ public class AppModificada extends javax.swing.JFrame {
                 .addComponent(VerPartidasTerminadasBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(VerPartidasSinTerminarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
                 .addComponent(SalirBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        Barra.setBackground(new java.awt.Color(170, 57, 57));
+        Barra.setBackground(new java.awt.Color(61, 102, 61));
         Barra.setPreferredSize(new java.awt.Dimension(750, 90));
 
         GitHubTexto.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         GitHubTexto.setForeground(new java.awt.Color(255, 255, 255));
-        GitHubTexto.setIcon(new javax.swing.ImageIcon("C:\\Users\\DAW_M\\Documents\\NetBeansProjects\\Juego-Batalla-Naval\\src\\main\\img\\github.png")); // NOI18N
+        GitHubTexto.setIcon(new javax.swing.ImageIcon("C:\\Users\\mario\\Documents\\0A_DAM-III\\1. Hundir La Flota MRA\\Batalla_Naval_Cliente\\src\\main\\img\\github.png")); // NOI18N
         GitHubTexto.setText("marromagu");
         GitHubTexto.setIconTextGap(10);
 
-        emailTexto.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        emailTexto.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
         emailTexto.setForeground(new java.awt.Color(255, 255, 255));
         emailTexto.setText(" Hundir La Flota.");
         emailTexto.setPreferredSize(new java.awt.Dimension(100, 23));
 
         textoEjercicio.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         textoEjercicio.setForeground(new java.awt.Color(255, 255, 255));
-        textoEjercicio.setIcon(new javax.swing.ImageIcon("C:\\Users\\DAW_M\\Documents\\NetBeansProjects\\Juego-Batalla-Naval\\src\\main\\img\\gmail_1.png")); // NOI18N
+        textoEjercicio.setIcon(new javax.swing.ImageIcon("C:\\Users\\mario\\Documents\\0A_DAM-III\\1. Hundir La Flota MRA\\Batalla_Naval_Cliente\\src\\main\\img\\gmail_1.png")); // NOI18N
         textoEjercicio.setText("mromagu2611@g.educaand.es");
         textoEjercicio.setIconTextGap(10);
 
@@ -188,9 +188,9 @@ public class AppModificada extends javax.swing.JFrame {
                 .addComponent(GitHubTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(textoEjercicio)
-                .addGap(33, 33, 33)
-                .addComponent(emailTexto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(852, 852, 852))
+                .addGap(36, 36, 36)
+                .addComponent(emailTexto, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                .addContainerGap())
         );
         BarraLayout.setVerticalGroup(
             BarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,7 +200,7 @@ public class AppModificada extends javax.swing.JFrame {
                     .addComponent(GitHubTexto)
                     .addComponent(textoEjercicio))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(emailTexto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(emailTexto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         Contenido.setBackground(new java.awt.Color(255, 255, 255));
@@ -226,29 +226,27 @@ public class AppModificada extends javax.swing.JFrame {
         backgrounLayout.setHorizontalGroup(
             backgrounLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backgrounLayout.createSequentialGroup()
-                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Contenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(276, 276, 276)
+                .addComponent(Contenido, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(backgrounLayout.createSequentialGroup()
-                .addGap(268, 268, 268)
-                .addComponent(Barra, javax.swing.GroupLayout.DEFAULT_SIZE, 1462, Short.MAX_VALUE))
+                .addGap(262, 262, 262)
+                .addComponent(Barra, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE))
         );
         backgrounLayout.setVerticalGroup(
             backgrounLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
             .addGroup(backgrounLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(Barra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(136, 136, 136)
                 .addComponent(Contenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
+            .addComponent(Barra, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(backgroun, javax.swing.GroupLayout.PREFERRED_SIZE, 1036, Short.MAX_VALUE)
+            .addComponent(backgroun, javax.swing.GroupLayout.DEFAULT_SIZE, 1042, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,7 +264,7 @@ public class AppModificada extends javax.swing.JFrame {
 
     private void VerPartidasTerminadasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerPartidasTerminadasBotonActionPerformed
 
-        // ShowJPanel(new Ventana_Opcion2_VerT(this));
+        ShowJPanel(new Ventana_VerPartidaTerminada(this));
     }//GEN-LAST:event_VerPartidasTerminadasBotonActionPerformed
 
     private void VerPartidasSinTerminarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerPartidasSinTerminarBotonActionPerformed
@@ -289,7 +287,7 @@ public class AppModificada extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AppModificada().setVisible(true);
+                new AppModificada().setVisible(false);
             }
         });
     }
@@ -314,6 +312,12 @@ public class AppModificada extends javax.swing.JFrame {
     private void initStyle() {
         texto.putClientProperty("FlatLaf.styleClass", "h1");
         texto.setForeground(Color.WHITE);
+    }
+
+    public void initShowJPanel() {
+        Contenido.removeAll();
+        Contenido.revalidate();
+        Contenido.repaint();
     }
 
     public void ShowJPanel(JPanel p) {

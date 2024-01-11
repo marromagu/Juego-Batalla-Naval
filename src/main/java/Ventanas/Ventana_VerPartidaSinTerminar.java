@@ -30,19 +30,87 @@ public class Ventana_VerPartidaSinTerminar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Fondo = new javax.swing.JPanel();
+        MiTurno = new javax.swing.JButton();
+        SuTurno = new javax.swing.JButton();
+
+        MiTurno.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 18)); // NOI18N
+        MiTurno.setForeground(new java.awt.Color(0, 255, 59));
+        MiTurno.setText("Ver Partidas Sin Terminar (Mi Turno)");
+        MiTurno.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        MiTurno.setBorderPainted(false);
+        MiTurno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        MiTurno.setIconTextGap(10);
+        MiTurno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MiTurnoActionPerformed(evt);
+            }
+        });
+
+        SuTurno.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 18)); // NOI18N
+        SuTurno.setForeground(new java.awt.Color(255, 0, 22));
+        SuTurno.setText("Ver Partidas Sin Terminar (Su Turno)");
+        SuTurno.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        SuTurno.setBorderPainted(false);
+        SuTurno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SuTurno.setIconTextGap(10);
+        SuTurno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SuTurnoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout FondoLayout = new javax.swing.GroupLayout(Fondo);
+        Fondo.setLayout(FondoLayout);
+        FondoLayout.setHorizontalGroup(
+            FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FondoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(SuTurno, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
+                    .addComponent(MiTurno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        FondoLayout.setVerticalGroup(
+            FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FondoLayout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(SuTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77)
+                .addComponent(MiTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(80, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void MiTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiTurnoActionPerformed
+        miApp.ShowJPanel(new Ventana_VerPartidaMiTurno(miApp));
+    }//GEN-LAST:event_MiTurnoActionPerformed
+
+    private void SuTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SuTurnoActionPerformed
+        miApp.ShowJPanel(new Ventana_VerPartidaSuTurno(miApp));
+    }//GEN-LAST:event_SuTurnoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Fondo;
+    private javax.swing.JButton MiTurno;
+    private javax.swing.JButton SuTurno;
+    private javax.swing.JButton VerPartidasTerminadasBoton1;
+    private javax.swing.JButton VerPartidasTerminadasBoton2;
+    private javax.swing.JButton VerPartidasTerminadasBoton3;
+    private javax.swing.JButton VerPartidasTerminadasBoton4;
+    private javax.swing.JButton VerPartidasTerminadasBoton5;
+    private javax.swing.JButton VerPartidasTerminadasBoton6;
     // End of variables declaration//GEN-END:variables
 }

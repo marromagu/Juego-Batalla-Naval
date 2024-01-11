@@ -129,7 +129,7 @@ public class Ventana_EmpezarPartida extends javax.swing.JPanel {
     private void JugarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JugarBotonActionPerformed
         int id_jugador = Integer.parseInt(IdJugador.getText());
         int id_partida = miApp.getMiCliente().crearNuevaPartida(id_jugador);
-        miApp.ShowJPanel(new Ventana_Opcion1_EP_Jugar(miApp, id_partida));
+        miApp.ShowJPanel(new Ventana_EmpezarPartidaJugar(miApp, id_partida));
     }//GEN-LAST:event_JugarBotonActionPerformed
 
 

@@ -5,7 +5,6 @@
 package Ventanas;
 
 import App.AppModificada;
-import App.Ventana_Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -13,15 +12,15 @@ import java.util.HashMap;
  *
  * @author mario
  */
-public class Ventana_Opcion1_EP_Jugar extends javax.swing.JPanel {
+public class Ventana_EmpezarPartidaJugar extends javax.swing.JPanel {
 
-    private AppModificada miApp; // Agrega una referencia a la instancia de Ventana_Principal
+    private final AppModificada miApp; // Agrega una referencia a la instancia de Ventana_Principal
     private int id_partida;
 
     /**
      * Creates new form VentanaOpcionesEmpezarPartida
      */
-    public Ventana_Opcion1_EP_Jugar(AppModificada app, int id_partida) {
+    public Ventana_EmpezarPartidaJugar(AppModificada app, int id_partida) {
         initComponents();
         this.miApp = app; // Asigna la referencia de Ventana_Principal
         this.id_partida = id_partida;
@@ -143,7 +142,7 @@ public class Ventana_Opcion1_EP_Jugar extends javax.swing.JPanel {
     private void initializeButton() {
         jButtonBack.addActionListener((java.awt.event.ActionEvent evt) -> {
             // Vuelve a la ventana VentanaOpciones
-            miApp.showOpcionesPanel();
+            miApp.ShowJPanel(new Ventana_EmpezarPartida(miApp));
         });
     }
 
