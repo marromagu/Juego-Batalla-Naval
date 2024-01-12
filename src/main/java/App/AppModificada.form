@@ -100,7 +100,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-                      <Component id="Icono" min="-2" max="-2" attributes="0"/>
+                      <Component id="Icono" min="-2" pref="71" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -232,11 +232,6 @@
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="Icono">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\mario\Documents\0A_DAM-III\1. Hundir La Flota MRA\Batalla_Naval_Cliente\src\main\img\barco-pirata (1).png"/>
-                </Property>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -287,9 +282,6 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\mario\Documents\0A_DAM-III\1. Hundir La Flota MRA\Batalla_Naval_Cliente\src\main\img\github.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="marromagu"/>
                 <Property name="iconTextGap" type="int" value="10"/>
               </Properties>
@@ -315,9 +307,6 @@
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\mario\Documents\0A_DAM-III\1. Hundir La Flota MRA\Batalla_Naval_Cliente\src\main\img\gmail_1.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="mromagu2611@g.educaand.es"/>
                 <Property name="iconTextGap" type="int" value="10"/>

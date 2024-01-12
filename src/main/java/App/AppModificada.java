@@ -121,8 +121,6 @@ public class AppModificada extends javax.swing.JFrame {
             }
         });
 
-        Icono.setIcon(new javax.swing.ImageIcon("C:\\Users\\mario\\Documents\\0A_DAM-III\\1. Hundir La Flota MRA\\Batalla_Naval_Cliente\\src\\main\\img\\barco-pirata (1).png")); // NOI18N
-
         javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
         menu.setLayout(menuLayout);
         menuLayout.setHorizontalGroup(
@@ -139,7 +137,7 @@ public class AppModificada extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(menuLayout.createSequentialGroup()
                 .addGap(90, 90, 90)
-                .addComponent(Icono)
+                .addComponent(Icono, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         menuLayout.setVerticalGroup(
@@ -164,7 +162,6 @@ public class AppModificada extends javax.swing.JFrame {
 
         GitHubTexto.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         GitHubTexto.setForeground(new java.awt.Color(255, 255, 255));
-        GitHubTexto.setIcon(new javax.swing.ImageIcon("C:\\Users\\mario\\Documents\\0A_DAM-III\\1. Hundir La Flota MRA\\Batalla_Naval_Cliente\\src\\main\\img\\github.png")); // NOI18N
         GitHubTexto.setText("marromagu");
         GitHubTexto.setIconTextGap(10);
 
@@ -175,7 +172,6 @@ public class AppModificada extends javax.swing.JFrame {
 
         textoEjercicio.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         textoEjercicio.setForeground(new java.awt.Color(255, 255, 255));
-        textoEjercicio.setIcon(new javax.swing.ImageIcon("C:\\Users\\mario\\Documents\\0A_DAM-III\\1. Hundir La Flota MRA\\Batalla_Naval_Cliente\\src\\main\\img\\gmail_1.png")); // NOI18N
         textoEjercicio.setText("mromagu2611@g.educaand.es");
         textoEjercicio.setIconTextGap(10);
 

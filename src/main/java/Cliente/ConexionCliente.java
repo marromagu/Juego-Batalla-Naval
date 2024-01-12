@@ -55,18 +55,19 @@ public final class ConexionCliente {
 
     //Método para mandar los datos del login
     public boolean login(String usuario, int contraseña) {
+        boolean valido= false;
         try {
             //Mandamos al servidor el Usuario y la contraseña
             flujo_salida.writeUTF(usuario);
             flujo_salida.writeInt(contraseña);
+            valido = flujo_entrada.readBoolean();
             listaUsuario = (HashMap<Integer, String>) recibirObjeto();
-            System.out.println(listaUsuario);
             misDatos = (DatosJugador) recibirObjeto();
-            return true;
+            return valido;
         } catch (IOException ex) {
             System.out.println("--> ERROR: mandarDatosLogin: " + ex.getMessage());
         }
-        return false;
+        return valido;
 
     }
 
