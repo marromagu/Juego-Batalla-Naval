@@ -141,6 +141,11 @@ public class Ventana_VerPartidaTerminada extends javax.swing.JPanel {
         // Centrar datos en la tabla
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
+        
+        for (int i = 0; i < TablaPartidas.getColumnCount(); i++) {
+            TablaPartidas.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+        
         TablaPartidas.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

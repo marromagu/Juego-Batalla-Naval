@@ -192,9 +192,11 @@ public class Ventana_VerPartidaMiTurnoDisparar extends javax.swing.JPanel {
             } else {
                 JOptionPane.showMessageDialog(this, "Agua", "Resultado del Disparo", JOptionPane.INFORMATION_MESSAGE);
             }
-             miApp.ShowJPanel(new Ventana_VerPartidaMiTurno(miApp));
+            miApp.ShowJPanel(new Ventana_VerPartidaMiTurno(miApp));
         } catch (NumberFormatException e) {
             // Manejar la excepción si ocurre un error al convertir a entero
+            CoordenadaX.setText("");
+            CoordenadaY.setText("");
             JOptionPane.showMessageDialog(this, "Por favor, ingrese números válidos en las coordenadas.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_BotonDisparoActionPerformed
