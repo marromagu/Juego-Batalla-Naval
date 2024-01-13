@@ -5,8 +5,11 @@
 package Ventanas;
 
 import App.AppModificada;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,12 +21,13 @@ public class Ventana_VerPartidaMiTurno extends javax.swing.JPanel {
 
     /**
      * Creates new form VentanaOpcionesEmpezarPartida
+     * @param app
      */
     public Ventana_VerPartidaMiTurno(AppModificada app) {
         initComponents();
         this.miApp = app; // Asigna la referencia de Ventana_Principal
         initializeButton();
-        mostarListaDePartidas();
+        mostarListaDePartida();
     }
 
     /**
@@ -37,58 +41,67 @@ public class Ventana_VerPartidaMiTurno extends javax.swing.JPanel {
 
         BackGround = new javax.swing.JPanel();
         jButtonBack = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TablaPartidas = new javax.swing.JTable();
 
+        setPreferredSize(new java.awt.Dimension(700, 500));
+
+        BackGround.setPreferredSize(new java.awt.Dimension(700, 500));
+
+        jButtonBack.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 24)); // NOI18N
+        jButtonBack.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack.setText("Atras");
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jLabel1.setText("Id Paritda");
-
-        jButton1.setText("Jugar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonBackActionPerformed(evt);
             }
         });
+
+        TablaPartidas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null}
+            },
+            new String [] {
+                "Id Partida", "Jugador 1", "Jugador 2", "Ultimo Turno"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(TablaPartidas);
 
         javax.swing.GroupLayout BackGroundLayout = new javax.swing.GroupLayout(BackGround);
         BackGround.setLayout(BackGroundLayout);
         BackGroundLayout.setHorizontalGroup(
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
-                .addContainerGap(360, Short.MAX_VALUE)
-                .addComponent(jButtonBack))
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(BackGroundLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(305, 305, 305)
+                .addComponent(jButtonBack)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         BackGroundLayout.setVerticalGroup(
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
-                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
-                    .addGroup(BackGroundLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, 0)
-                .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(BackGroundLayout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonBack)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -103,36 +116,68 @@ public class Ventana_VerPartidaMiTurno extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String id_partida;
-        id_partida = jTextField1.getText();
-        miApp.ShowJPanel(new Ventana_VerPartidaMiTurnoDisparar(miApp, id_partida));
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+        miApp.ShowJPanel(new Ventana_VerPartidaSinTerminar(miApp));
+    }//GEN-LAST:event_jButtonBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackGround;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTable TablaPartidas;
     private javax.swing.JButton jButtonBack;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 
     private void initializeButton() {
         jButtonBack.addActionListener((java.awt.event.ActionEvent evt) -> {
             // Vuelve a la ventana VentanaOpciones
-           miApp.ShowJPanel(new Ventana_VerPartidaSinTerminar(miApp));
+            miApp.ShowJPanel(new Ventana_VerPartidaSinTerminar(miApp));
         });
     }
 
-    private void mostarListaDePartidas() {
-        jTextArea1.setText("");
-        HashMap<Integer, String> paritdas = miApp.getMiCliente().getMisDatos().getListaPartidasMiTurno();
-        for (Map.Entry<Integer, String> paritda : paritdas.entrySet()) {
-            jTextArea1.append(paritda.getValue() + "\n");
+    private void mostarListaDePartida() {
+        DefaultTableModel modelo = (DefaultTableModel) TablaPartidas.getModel();
+        modelo.setRowCount(0); // Limpiar todas las filas
+        
+        //Actualizar partidas mi turno
+        miApp.getMiCliente().actualizarListaDePartidasSinTerminarMiTurno();
+        
+        HashMap<Integer, String> listaDePartidas = miApp.getMiCliente().getMisDatos().getListaPartidasMiTurno();
 
+        for (Map.Entry<Integer, String> partida : listaDePartidas.entrySet()) {
+            String[] datosPartida = partida.getValue().split(",");
+
+            // Asegurarse de que hay suficientes datos para llenar las columnas
+            if (datosPartida.length == 4) {
+                modelo.addRow(new Object[]{
+                    Integer.parseInt(datosPartida[0]), // Id Partida
+                    datosPartida[1], // Jugador 1
+                    datosPartida[2], // Jugador 2
+                    datosPartida[3] // Último Turno
+                });
+            }
         }
+        // Asegurarse de que la Tabla se actualiza
+        modelo.fireTableDataChanged();
+        // Agrega un listener de eventos de raton a la tabla
+        TablaPartidas.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) { // Doble clic
+                    int filaSeleccionada = TablaPartidas.getSelectedRow();
+                    if (filaSeleccionada != -1) {
+                        // Obtiene el valor de la columna "Id Jugador" de la fila seleccionada
+                        int idPartidaSeleccionada = (int) TablaPartidas.getValueAt(filaSeleccionada, 0);
+
+                        // Muestra la ventana o realiza la acción que deseas con el idJugadorSeleccionado
+                        mostrarVentana(idPartidaSeleccionada);
+                    }
+                }
+            }
+
+            private void mostrarVentana(int idPartidaSeleccionada) {
+                miApp.ShowJPanel(new Ventana_VerPartidaMiTurnoDisparar(miApp, idPartidaSeleccionada));
+            }
+        });
     }
 }

@@ -55,13 +55,16 @@ public final class ConexionCliente {
 
     //Método para mandar los datos del login
     public boolean login(String usuario, int contraseña) {
-        boolean valido= false;
+        boolean valido = false;
         try {
             //Mandamos al servidor el Usuario y la contraseña
             flujo_salida.writeUTF(usuario);
             flujo_salida.writeInt(contraseña);
+            //Esperamos confirmacion
             valido = flujo_entrada.readBoolean();
+            //Recibimos la lista de usuarios
             listaUsuario = (HashMap<Integer, String>) recibirObjeto();
+            //Recibimos los datos del jugador
             misDatos = (DatosJugador) recibirObjeto();
             return valido;
         } catch (IOException ex) {
@@ -116,7 +119,7 @@ public final class ConexionCliente {
         }
     }
 
-    public void actualizarListaDePartidas() {
+    public void actualizarListaDePartidasTerminadas() {
         try {
             flujo_salida.writeInt(4);
             misDatos.setListaPartidaTermindas((HashMap<Integer, String>) recibirObjeto());
@@ -125,8 +128,26 @@ public final class ConexionCliente {
         }
     }
 
+    public void actualizarListaDePartidasSinTerminarSuTurno() {
+        try {
+            flujo_salida.writeInt(5);
+            misDatos.setListaPartidasSuTurno((HashMap<Integer, String>) recibirObjeto());
+        } catch (IOException ex) {
+            Logger.getLogger(ConexionCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void actualizarListaDePartidasSinTerminarMiTurno() {
+        try {
+            flujo_salida.writeInt(6);
+            misDatos.setListaPartidasMiTurno((HashMap<Integer, String>) recibirObjeto());
+        } catch (IOException ex) {
+            Logger.getLogger(ConexionCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public int crearNuevaPartida(int id_Jugador2) {
-        int id_partida = 0;
+        int id_partida = 7;
         try {
             flujo_salida.writeInt(5);
             flujo_salida.writeInt(misDatos.getIdJugador());
@@ -158,7 +179,8 @@ public final class ConexionCliente {
 
     public void cerrarConexiones() {
         try {
-            listaUsuario.remove(misDatos.getIdJugador());
+            flujo_salida.writeInt(0);
+            flujo_salida.writeInt(getMisDatos().getIdJugador());
             // Cierra la conexión del cliente y otros recursos
             if (socketCliente != null && !socketCliente.isClosed()) {
                 socketCliente.close();

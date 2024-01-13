@@ -5,7 +5,8 @@
 package Ventanas;
 
 import App.AppModificada;
-import java.util.ArrayList;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.Scanner;
 import javax.swing.table.DefaultTableModel;
@@ -39,20 +40,10 @@ public class Ventana_VerPartidaTerminada extends javax.swing.JPanel {
     private void initComponents() {
 
         BackGround = new javax.swing.JPanel();
-        id_ParitdaJLabel = new javax.swing.JLabel();
-        id_PartidaJTextField = new javax.swing.JTextField();
-        verJButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         TablaPartidas = new javax.swing.JTable();
 
-        id_ParitdaJLabel.setText("Id Paritda");
-
-        verJButton.setText("Ver");
-        verJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verJButtonActionPerformed(evt);
-            }
-        });
+        setPreferredSize(new java.awt.Dimension(700, 500));
 
         TablaPartidas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -85,28 +76,15 @@ public class Ventana_VerPartidaTerminada extends javax.swing.JPanel {
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackGroundLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(id_ParitdaJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(id_PartidaJTextField))
-                .addGap(18, 18, 18)
-                .addComponent(verJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
+                .addContainerGap())
         );
         BackGroundLayout.setVerticalGroup(
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackGroundLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(BackGroundLayout.createSequentialGroup()
-                        .addComponent(id_ParitdaJLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(id_PartidaJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(verJButton))))
-                .addGap(0, 19, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -121,26 +99,20 @@ public class Ventana_VerPartidaTerminada extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void verJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verJButtonActionPerformed
-        String id_partida;
-        id_partida = id_PartidaJTextField.getText();
-        miApp.ShowJPanel(new Ventana_VerPartidaTerminadaRepeticion(miApp, id_partida));
-    }//GEN-LAST:event_verJButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackGround;
     private javax.swing.JTable TablaPartidas;
-    private javax.swing.JLabel id_ParitdaJLabel;
-    private javax.swing.JTextField id_PartidaJTextField;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JButton verJButton;
     // End of variables declaration//GEN-END:variables
 
     private void llenarTablaConDatos() {
         DefaultTableModel model = (DefaultTableModel) TablaPartidas.getModel();
         model.setRowCount(0); // Limpia la tabla antes de agregar nuevos datos
-
+        
+        //Actualizamos la lista de partidas
+        miApp.getMiCliente().actualizarListaDePartidasTerminadas();
+        
         // Obtén la lista de partidas terminadas desde la aplicación
         HashMap<Integer, String> partidas = miApp.getMiCliente().getMisDatos().getListaPartidaTermindas();
 
@@ -161,5 +133,25 @@ public class Ventana_VerPartidaTerminada extends javax.swing.JPanel {
 
             sc.close();
         }
+        TablaPartidas.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) { // Doble clic
+                    int filaSeleccionada = TablaPartidas.getSelectedRow();
+                    if (filaSeleccionada != -1) {
+                        // Obtiene el valor de la columna "Id Partida" de la fila seleccionada
+                        String idPartidaSeleccionada = TablaPartidas.getValueAt(filaSeleccionada, 0).toString();
+
+                        // Realiza la acción del botón verJButtonActionPerformed con el idPartidaSeleccionada
+                        verJButtonActionPerformed(idPartidaSeleccionada);
+                    }
+                }
+            }
+        });
     }
+
+    private void verJButtonActionPerformed(String idPartida) {
+        miApp.ShowJPanel(new Ventana_VerPartidaTerminadaRepeticion(miApp, idPartida));
+    }
+
 }

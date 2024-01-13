@@ -121,6 +121,8 @@ public class AppModificada extends javax.swing.JFrame {
             }
         });
 
+        Icono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/loro.png"))); // NOI18N
+
         javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
         menu.setLayout(menuLayout);
         menuLayout.setHorizontalGroup(
@@ -136,16 +138,16 @@ public class AppModificada extends javax.swing.JFrame {
                     .addComponent(VerPartidasSinTerminarBoton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(menuLayout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(Icono, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79)
+                .addComponent(Icono)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         menuLayout.setVerticalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(Icono, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
+                .addComponent(Icono)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Separador, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64)
                 .addComponent(EmpezarPartidaBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -153,7 +155,7 @@ public class AppModificada extends javax.swing.JFrame {
                 .addComponent(VerPartidasTerminadasBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(VerPartidasSinTerminarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
                 .addComponent(SalirBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -162,6 +164,7 @@ public class AppModificada extends javax.swing.JFrame {
 
         GitHubTexto.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         GitHubTexto.setForeground(new java.awt.Color(255, 255, 255));
+        GitHubTexto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/github.png"))); // NOI18N
         GitHubTexto.setText("marromagu");
         GitHubTexto.setIconTextGap(10);
 
@@ -172,6 +175,7 @@ public class AppModificada extends javax.swing.JFrame {
 
         textoEjercicio.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         textoEjercicio.setForeground(new java.awt.Color(255, 255, 255));
+        textoEjercicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gmail_1.png"))); // NOI18N
         textoEjercicio.setText("mromagu2611@g.educaand.es");
         textoEjercicio.setIconTextGap(10);
 
@@ -180,27 +184,27 @@ public class AppModificada extends javax.swing.JFrame {
         BarraLayout.setHorizontalGroup(
             BarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BarraLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(65, 65, 65)
                 .addComponent(GitHubTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(textoEjercicio)
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
                 .addComponent(emailTexto, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
                 .addContainerGap())
         );
         BarraLayout.setVerticalGroup(
             BarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BarraLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(BarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(GitHubTexto)
-                    .addComponent(textoEjercicio))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(emailTexto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BarraLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(BarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(GitHubTexto)
+                        .addComponent(textoEjercicio))
+                    .addComponent(emailTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         Contenido.setBackground(new java.awt.Color(255, 255, 255));
-        Contenido.setPreferredSize(new java.awt.Dimension(758, 516));
+        Contenido.setPreferredSize(new java.awt.Dimension(700, 500));
 
         texto.setText("Mario Romero Aguilar");
 
@@ -214,7 +218,7 @@ public class AppModificada extends javax.swing.JFrame {
             ContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ContenidoLayout.createSequentialGroup()
                 .addComponent(texto)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 484, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout backgrounLayout = new javax.swing.GroupLayout(backgroun);
@@ -222,20 +226,22 @@ public class AppModificada extends javax.swing.JFrame {
         backgrounLayout.setHorizontalGroup(
             backgrounLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backgrounLayout.createSequentialGroup()
-                .addGap(276, 276, 276)
-                .addComponent(Contenido, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Contenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(backgrounLayout.createSequentialGroup()
                 .addGap(262, 262, 262)
                 .addComponent(Barra, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE))
         );
         backgrounLayout.setVerticalGroup(
             backgrounLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(backgrounLayout.createSequentialGroup()
-                .addGap(136, 136, 136)
-                .addComponent(Contenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
-            .addComponent(Barra, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(backgrounLayout.createSequentialGroup()
+                .addComponent(Barra, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Contenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -322,7 +328,7 @@ public class AppModificada extends javax.swing.JFrame {
         Contenido.revalidate();
         Contenido.repaint();
 
-        p.setSize(700, 400);
+        p.setSize(700, 500);
         p.setLocation(0, 0);
 
         Contenido.removeAll();

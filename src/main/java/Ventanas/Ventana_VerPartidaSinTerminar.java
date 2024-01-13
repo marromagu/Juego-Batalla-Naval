@@ -68,17 +68,17 @@ public class Ventana_VerPartidaSinTerminar extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(SuTurno, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
-                    .addComponent(MiTurno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(MiTurno, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE))
                 .addContainerGap())
         );
         FondoLayout.setVerticalGroup(
             FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FondoLayout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(SuTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
+                .addGap(65, 65, 65)
                 .addComponent(MiTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addComponent(SuTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -106,11 +106,5 @@ public class Ventana_VerPartidaSinTerminar extends javax.swing.JPanel {
     private javax.swing.JPanel Fondo;
     private javax.swing.JButton MiTurno;
     private javax.swing.JButton SuTurno;
-    private javax.swing.JButton VerPartidasTerminadasBoton1;
-    private javax.swing.JButton VerPartidasTerminadasBoton2;
-    private javax.swing.JButton VerPartidasTerminadasBoton3;
-    private javax.swing.JButton VerPartidasTerminadasBoton4;
-    private javax.swing.JButton VerPartidasTerminadasBoton5;
-    private javax.swing.JButton VerPartidasTerminadasBoton6;
     // End of variables declaration//GEN-END:variables
 }

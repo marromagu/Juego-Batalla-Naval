@@ -5,8 +5,12 @@
 package Ventanas;
 
 import App.AppModificada;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -15,14 +19,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Ventana_EmpezarPartida extends javax.swing.JPanel {
 
-    private AppModificada miApp; // Agrega una referencia a la instancia de Ventana_Principal
+    private AppModificada miApp; // Agrega una referencia a la instancia de AppModificada
 
     /**
      * Creates new form VentanaOpcionesEmpezarPartida
      */
     public Ventana_EmpezarPartida(AppModificada app) {
         initComponents();
-        this.miApp = app; // Asigna la referencia de Ventana_Principal
+        this.miApp = app; // Asigna la referencia de AppModificada
         tablaJugadores();
     }
 
@@ -36,24 +40,12 @@ public class Ventana_EmpezarPartida extends javax.swing.JPanel {
     private void initComponents() {
 
         BackGround = new javax.swing.JPanel();
-        IdJugador = new javax.swing.JTextField();
-        TextoIdJugador = new javax.swing.JLabel();
-        JugarBoton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         TablaJugadores = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(700, 400));
 
         BackGround.setPreferredSize(new java.awt.Dimension(700, 400));
-
-        TextoIdJugador.setText("Id del Jugador: ");
-
-        JugarBoton.setText("Jugar");
-        JugarBoton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JugarBotonActionPerformed(evt);
-            }
-        });
 
         TablaJugadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -84,61 +76,35 @@ public class Ventana_EmpezarPartida extends javax.swing.JPanel {
         BackGround.setLayout(BackGroundLayout);
         BackGroundLayout.setHorizontalGroup(
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
+            .addGroup(BackGroundLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(TextoIdJugador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(JugarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(IdJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 190, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
+                .addContainerGap())
         );
         BackGroundLayout.setVerticalGroup(
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BackGroundLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(BackGroundLayout.createSequentialGroup()
-                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TextoIdJugador)
-                            .addComponent(IdJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(JugarBoton))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(BackGround, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(BackGround, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(BackGround, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(BackGround, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void JugarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JugarBotonActionPerformed
-        int id_jugador = Integer.parseInt(IdJugador.getText());
-        int id_partida = miApp.getMiCliente().crearNuevaPartida(id_jugador);
-        miApp.ShowJPanel(new Ventana_EmpezarPartidaJugar(miApp, id_partida));
-    }//GEN-LAST:event_JugarBotonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackGround;
-    private javax.swing.JTextField IdJugador;
-    private javax.swing.JButton JugarBoton;
     private javax.swing.JTable TablaJugadores;
-    private javax.swing.JLabel TextoIdJugador;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 
@@ -157,5 +123,36 @@ public class Ventana_EmpezarPartida extends javax.swing.JPanel {
 
         // Asegurarse de que la Tabla se actualiza
         modelo.fireTableDataChanged();
+
+        // Centrar datos en la tabla
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
+
+        for (int i = 0; i < TablaJugadores.getColumnCount(); i++) {
+            TablaJugadores.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+        // Agrega un listener de eventos de raton a la tabla
+        TablaJugadores.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) { // Doble clic
+                    int filaSeleccionada = TablaJugadores.getSelectedRow();
+                    if (filaSeleccionada != -1) {
+                        // Obtiene el valor de la columna "Id Jugador" de la fila seleccionada
+                        int idJugadorSeleccionado = (int) TablaJugadores.getValueAt(filaSeleccionada, 0);
+
+                        // Muestra la ventana o realiza la acción que deseas con el idJugadorSeleccionado
+                        mostrarVentana(idJugadorSeleccionado);
+                    }
+                }
+            }
+        });
+    }
+
+    private void mostrarVentana(int idJugador2) {
+        JOptionPane.showMessageDialog(this, "Partida empezada contra: " + idJugador2);
+        //int id_partida = 
+        miApp.getMiCliente().crearNuevaPartida(idJugador2);
+        // miApp.ShowJPanel(new Ventana_EmpezarPartidaJugar(miApp, id_partida));
     }
 }

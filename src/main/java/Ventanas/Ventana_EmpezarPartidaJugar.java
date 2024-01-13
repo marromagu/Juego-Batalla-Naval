@@ -6,7 +6,6 @@ package Ventanas;
 
 import App.AppModificada;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  *

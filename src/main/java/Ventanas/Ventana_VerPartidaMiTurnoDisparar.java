@@ -20,12 +20,12 @@ public class Ventana_VerPartidaMiTurnoDisparar extends javax.swing.JPanel {
      * @param app
      * @param id_partida
      */
-    public Ventana_VerPartidaMiTurnoDisparar(AppModificada app, String id_partida) {
+    public Ventana_VerPartidaMiTurnoDisparar(AppModificada app, int id_partida) {
         initComponents();
         this.miApp = app; // Asigna la referencia de Ventana_Principal
         initializeButton();
         IdPartidaJLabel.setText("Id Partida: " + id_partida);
-        id = Integer.parseInt(id_partida);
+        this.id = id_partida;
 
     }
 
