@@ -148,11 +148,19 @@ public class Login extends javax.swing.JFrame {
         String usuario = usuario_txt.getText();
         char[] contraseñaArray = contraseña_txt.getPassword();
         String contraseñaString = new String(contraseñaArray);
+
+        // Validar que la contraseña solo contenga números
+        if (!contraseñaString.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "La contraseña debe contener solo números", "Error", JOptionPane.ERROR_MESSAGE);
+            contraseña_txt.setText("");
+            return; // Sale del método si la contraseña no es válida
+        }
+
         int contraseña = Integer.parseInt(contraseñaString);
+
         if (!miCliente.login(usuario, contraseña)) {
             // Muestra un mensaje de error
-            JOptionPane.showMessageDialog(this, "Datos incorrectos");
-            miCliente.cerrarConexiones();
+            JOptionPane.showMessageDialog(this, "Datos incorrectos o Usuario ya conectado", "Error", JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         } else {
             JOptionPane.showMessageDialog(this, "Bienvenido ");

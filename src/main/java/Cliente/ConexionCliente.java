@@ -60,13 +60,27 @@ public final class ConexionCliente {
             //Mandamos al servidor el Usuario y la contraseña
             flujo_salida.writeUTF(usuario);
             flujo_salida.writeInt(contraseña);
-            //Esperamos confirmacion
+            
+            //Esperamos confirmacion de contraseña
             valido = flujo_entrada.readBoolean();
-            //Recibimos la lista de usuarios
-            listaUsuario = (HashMap<Integer, String>) recibirObjeto();
-            //Recibimos los datos del jugador
-            misDatos = (DatosJugador) recibirObjeto();
-            return valido;
+            System.out.println("Confirmacion de Contraseña " + valido);
+            if (valido) {
+                //Esperamos confirmacion de usuario conectado
+                valido = flujo_entrada.readBoolean();
+                System.out.println("Confirmacion de Usuario Conectado " + valido);
+                if (valido) {
+                    //Recibimos la lista de usuarios
+                    listaUsuario = (HashMap<Integer, String>) recibirObjeto();
+                    //Recibimos los datos del jugador
+                    misDatos = (DatosJugador) recibirObjeto();
+                    return valido;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+
         } catch (IOException ex) {
             System.out.println("--> ERROR: mandarDatosLogin: " + ex.getMessage());
         }
