@@ -9,6 +9,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,6 +22,7 @@ public class Ventana_VerPartidaMiTurno extends javax.swing.JPanel {
 
     /**
      * Creates new form VentanaOpcionesEmpezarPartida
+     *
      * @param app
      */
     public Ventana_VerPartidaMiTurno(AppModificada app) {
@@ -80,6 +82,7 @@ public class Ventana_VerPartidaMiTurno extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        TablaPartidas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane2.setViewportView(TablaPartidas);
 
         javax.swing.GroupLayout BackGroundLayout = new javax.swing.GroupLayout(BackGround);
@@ -138,10 +141,10 @@ public class Ventana_VerPartidaMiTurno extends javax.swing.JPanel {
     private void mostarListaDePartida() {
         DefaultTableModel modelo = (DefaultTableModel) TablaPartidas.getModel();
         modelo.setRowCount(0); // Limpiar todas las filas
-        
+
         //Actualizar partidas mi turno
         miApp.getMiCliente().actualizarListaDePartidasSinTerminarMiTurno();
-        
+
         HashMap<Integer, String> listaDePartidas = miApp.getMiCliente().getMisDatos().getListaPartidasMiTurno();
 
         for (Map.Entry<Integer, String> partida : listaDePartidas.entrySet()) {
@@ -159,6 +162,15 @@ public class Ventana_VerPartidaMiTurno extends javax.swing.JPanel {
         }
         // Asegurarse de que la Tabla se actualiza
         modelo.fireTableDataChanged();
+
+        // Centrar datos en la tabla
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
+
+        for (int i = 0; i < TablaPartidas.getColumnCount(); i++) {
+            TablaPartidas.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+
         // Agrega un listener de eventos de raton a la tabla
         TablaPartidas.addMouseListener(new MouseAdapter() {
             @Override

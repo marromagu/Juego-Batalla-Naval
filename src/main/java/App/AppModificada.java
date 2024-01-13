@@ -110,6 +110,7 @@ public class AppModificada extends javax.swing.JFrame {
 
         SalirBoton.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         SalirBoton.setForeground(new java.awt.Color(255, 255, 255));
+        SalirBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/salida (1).png"))); // NOI18N
         SalirBoton.setText("Salir");
         SalirBoton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         SalirBoton.setBorderPainted(false);

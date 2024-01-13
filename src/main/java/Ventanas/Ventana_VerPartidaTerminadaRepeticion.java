@@ -30,6 +30,7 @@ public class Ventana_VerPartidaTerminadaRepeticion extends javax.swing.JPanel {
         jLabel1.setText("Id Partida: " + id_partida);
         id = Integer.parseInt(id_partida);
         mostarListaDeDisparos();
+        BotonSiguiente.setEnabled(true);
     }
 
     /**
@@ -42,22 +43,35 @@ public class Ventana_VerPartidaTerminadaRepeticion extends javax.swing.JPanel {
     private void initComponents() {
 
         BackGround = new javax.swing.JPanel();
-        jButtonBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        Log_DeDisparos = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        BotonSiguiente = new javax.swing.JToggleButton();
+        jButtonBack = new javax.swing.JButton();
 
-        jButtonBack.setText("Atras");
+        setPreferredSize(new java.awt.Dimension(700, 500));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        BackGround.setPreferredSize(new java.awt.Dimension(700, 500));
 
-        jToggleButton1.setText("Siguiente");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        Log_DeDisparos.setColumns(20);
+        Log_DeDisparos.setRows(5);
+        jScrollPane1.setViewportView(Log_DeDisparos);
+
+        BotonSiguiente.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 24)); // NOI18N
+        BotonSiguiente.setForeground(new java.awt.Color(255, 255, 255));
+        BotonSiguiente.setText("Siguiente");
+        BotonSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                BotonSiguienteActionPerformed(evt);
+            }
+        });
+
+        jButtonBack.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 24)); // NOI18N
+        jButtonBack.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonBack.setText("Atras");
+        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBackActionPerformed(evt);
             }
         });
 
@@ -65,31 +79,34 @@ public class Ventana_VerPartidaTerminadaRepeticion extends javax.swing.JPanel {
         BackGround.setLayout(BackGroundLayout);
         BackGroundLayout.setHorizontalGroup(
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
-                .addGap(0, 360, Short.MAX_VALUE)
-                .addComponent(jButtonBack))
             .addGroup(BackGroundLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(BotonSiguiente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(BackGroundLayout.createSequentialGroup()
-                        .addComponent(jToggleButton1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
+                        .addGap(0, 96, Short.MAX_VALUE)
+                        .addComponent(jButtonBack)))
                 .addContainerGap())
         );
         BackGroundLayout.setVerticalGroup(
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
-                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(BackGroundLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BackGroundLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BotonSiguiente)
+                        .addGap(0, 46, Short.MAX_VALUE))
+                    .addGroup(BackGroundLayout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jToggleButton1))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonBack))
+                        .addComponent(jButtonBack)))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -104,25 +121,32 @@ public class Ventana_VerPartidaTerminadaRepeticion extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void BotonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSiguienteActionPerformed
         ArrayList<String> disparosRepeticion = miApp.getMiCliente().repeticion(id);
         if (i < disparosRepeticion.size()) {
             // Muestra el elemento actual y pasa al siguiente índice
-            jTextArea1.append(disparosRepeticion.get(i++).toString() + "\n");
+            Log_DeDisparos.append(disparosRepeticion.get(i++) + "\n");
         } else {
             // Muestra un mensaje cuando se alcanza el final del array
-            jTextArea1.append("Fin de la lista\n");
+            Log_DeDisparos.append("Fin de la lista\n");
+
+            // Desactiva el botón "Siguiente" al final de la lista
+            BotonSiguiente.setEnabled(false);
         }
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_BotonSiguienteActionPerformed
+
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+        miApp.ShowJPanel(new Ventana_VerPartidaTerminada(miApp));
+    }//GEN-LAST:event_jButtonBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackGround;
+    private javax.swing.JToggleButton BotonSiguiente;
+    private javax.swing.JTextArea Log_DeDisparos;
     private javax.swing.JButton jButtonBack;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 
     private void initializeButton() {
@@ -133,6 +157,6 @@ public class Ventana_VerPartidaTerminadaRepeticion extends javax.swing.JPanel {
     }
 
     private void mostarListaDeDisparos() {
-        jTextArea1.setText("-Pulsa Siguiente-\n");
+        Log_DeDisparos.setText("-Pulsa Siguiente-\n");
     }
 }

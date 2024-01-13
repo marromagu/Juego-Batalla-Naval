@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -41,14 +42,14 @@ public class Ventana_VerPartidaSuTurno extends javax.swing.JPanel {
 
         BackGround = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaPartidas = new javax.swing.JTable();
         jButtonBack = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(700, 500));
 
         BackGround.setPreferredSize(new java.awt.Dimension(700, 500));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaPartidas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -71,7 +72,8 @@ public class Ventana_VerPartidaSuTurno extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable1);
+        TablaPartidas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jScrollPane2.setViewportView(TablaPartidas);
 
         jButtonBack.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 24)); // NOI18N
         jButtonBack.setForeground(new java.awt.Color(255, 255, 255));
@@ -124,9 +126,9 @@ public class Ventana_VerPartidaSuTurno extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackGround;
+    private javax.swing.JTable TablaPartidas;
     private javax.swing.JButton jButtonBack;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
     private void initializeButton() {
@@ -137,12 +139,12 @@ public class Ventana_VerPartidaSuTurno extends javax.swing.JPanel {
     }
 
     private void mostarListaDePartidas() {
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) TablaPartidas.getModel();
         modelo.setRowCount(0); // Limpiar todas las filas
 
         // Actualizamos las partidas
         miApp.getMiCliente().actualizarListaDePartidasSinTerminarSuTurno();
-      
+
         HashMap<Integer, String> partidas = miApp.getMiCliente().getMisDatos().getListaPartidasSuTurno();
 
         for (Map.Entry<Integer, String> partida : partidas.entrySet()) {
@@ -157,14 +159,24 @@ public class Ventana_VerPartidaSuTurno extends javax.swing.JPanel {
                     datosPartida[3] // Último Turno
                 });
             }
-            jTable1.addMouseListener(new MouseAdapter() {
+            // Asegurarse de que la Tabla se actualiza
+            modelo.fireTableDataChanged();
+            
+            // Centrar datos en la tabla
+            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+            centerRenderer.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
+
+            for (int i = 0; i < TablaPartidas.getColumnCount(); i++) {
+                TablaPartidas.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+            }
+            TablaPartidas.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     if (e.getClickCount() == 2) { // Doble clic
-                        int filaSeleccionada = jTable1.getSelectedRow();
+                        int filaSeleccionada = TablaPartidas.getSelectedRow();
                         if (filaSeleccionada != -1) {
                             // Obtiene el valor de la columna "Id Partida" de la fila seleccionada
-                            int idPartidaSeleccionada = (int) jTable1.getValueAt(filaSeleccionada, 0);
+                            int idPartidaSeleccionada = (int) TablaPartidas.getValueAt(filaSeleccionada, 0);
 
                             // Realiza la acción del botón jButton1ActionPerformed con el idPartidaSeleccionada
                             accionRendirse(idPartidaSeleccionada);

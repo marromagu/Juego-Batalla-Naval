@@ -5,6 +5,9 @@
 package Ventanas;
 
 import App.AppModificada;
+import java.awt.Color;
+import java.awt.GridLayout;
+import javax.swing.JPanel;
 
 /**
  *
@@ -23,14 +26,24 @@ public class Ventana_EmpezarPartidaJugar extends javax.swing.JPanel {
      */
     public Ventana_EmpezarPartidaJugar(AppModificada app, int id_partida) {
         initComponents();
-        this.miApp = app; // Asigna la referencia de Ventana_Principal
+        this.miApp = app;
         this.id_partida = id_partida;
-        // Obtén el texto actual
+
         String textoActual = Titulo.getText();
-        // Concatena el nuevo texto
         String nuevoTexto = textoActual + this.id_partida;
-        // Establece el nuevo texto en el JTextField
         Titulo.setText(nuevoTexto);
+
+        // Crear una instancia de la clase Ventana_EmpezarPartidaJugarTablero
+        Ventana_EmpezarPartidaJugarTablero tablero = new Ventana_EmpezarPartidaJugarTablero(app);
+
+        // Configurar el GridLayout para el tablero
+        tablero.setLayout(new GridLayout(10, 10));
+
+        // Establecer el color de fondo del tablero
+        tablero.setBackground(Color.WHITE);
+
+        // Añadir el tablero al contenedor Tablero
+        ShowJPanel(tablero);
     }
 
     /**
@@ -45,8 +58,6 @@ public class Ventana_EmpezarPartidaJugar extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
         BackGround = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Tablero = new javax.swing.JTextArea();
         jButtonBack = new javax.swing.JButton();
         CoordenadaX = new javax.swing.JTextField();
         CoordenadaY = new javax.swing.JTextField();
@@ -55,16 +66,13 @@ public class Ventana_EmpezarPartidaJugar extends javax.swing.JPanel {
         BotonDisparo = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         Titulo = new javax.swing.JLabel();
+        Tablero = new javax.swing.JPanel();
 
         jScrollPane2.setViewportView(jTextPane1);
 
         setPreferredSize(new java.awt.Dimension(700, 500));
 
         BackGround.setPreferredSize(new java.awt.Dimension(700, 500));
-
-        Tablero.setColumns(20);
-        Tablero.setRows(5);
-        jScrollPane1.setViewportView(Tablero);
 
         jButtonBack.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 24)); // NOI18N
         jButtonBack.setForeground(new java.awt.Color(255, 255, 255));
@@ -86,6 +94,11 @@ public class Ventana_EmpezarPartidaJugar extends javax.swing.JPanel {
         BotonDisparo.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
         BotonDisparo.setForeground(new java.awt.Color(255, 255, 255));
         BotonDisparo.setText("Disparar");
+        BotonDisparo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonDisparoActionPerformed(evt);
+            }
+        });
 
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\mario\\Documents\\0A_DAM-III\\1. Hundir La Flota MRA\\Batalla_Naval_Cliente\\src\\main\\resources\\canon.png")); // NOI18N
 
@@ -93,18 +106,31 @@ public class Ventana_EmpezarPartidaJugar extends javax.swing.JPanel {
         Titulo.setForeground(new java.awt.Color(255, 255, 255));
         Titulo.setText("Partida: ");
 
+        javax.swing.GroupLayout TableroLayout = new javax.swing.GroupLayout(Tablero);
+        Tablero.setLayout(TableroLayout);
+        TableroLayout.setHorizontalGroup(
+            TableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+        TableroLayout.setVerticalGroup(
+            TableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout BackGroundLayout = new javax.swing.GroupLayout(BackGround);
         BackGround.setLayout(BackGroundLayout);
         BackGroundLayout.setHorizontalGroup(
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackGroundLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonBack))
                     .addGroup(BackGroundLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Tablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(BackGroundLayout.createSequentialGroup()
-                                .addGap(89, 89, 89)
+                                .addGap(83, 83, 83)
                                 .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(BackGroundLayout.createSequentialGroup()
                                         .addComponent(jLabel1)
@@ -117,26 +143,22 @@ public class Ventana_EmpezarPartidaJugar extends javax.swing.JPanel {
                                             .addComponent(BotonDisparo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(CoordenadaY)))))
                             .addGroup(BackGroundLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
+                                .addGap(12, 12, 12)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonBack)))
+                                .addComponent(Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         BackGroundLayout.setVerticalGroup(
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackGroundLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(BackGroundLayout.createSequentialGroup()
-                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(99, 99, 99)
                         .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(CoordenadaX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -145,7 +167,8 @@ public class Ventana_EmpezarPartidaJugar extends javax.swing.JPanel {
                             .addComponent(CoordenadaY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
-                        .addComponent(BotonDisparo)))
+                        .addComponent(BotonDisparo))
+                    .addComponent(Tablero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
                 .addComponent(jButtonBack)
                 .addContainerGap())
@@ -171,21 +194,30 @@ public class Ventana_EmpezarPartidaJugar extends javax.swing.JPanel {
         miApp.ShowJPanel(new Ventana_EmpezarPartida(miApp));
     }//GEN-LAST:event_jButtonBackActionPerformed
 
+    private void BotonDisparoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonDisparoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonDisparoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackGround;
     private javax.swing.JButton BotonDisparo;
     private javax.swing.JTextField CoordenadaX;
     private javax.swing.JTextField CoordenadaY;
-    private javax.swing.JTextArea Tablero;
+    private javax.swing.JPanel Tablero;
     private javax.swing.JLabel Titulo;
     private javax.swing.JButton jButtonBack;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 
+    // Método para mostrar un panel en el contenedor del tablero
+    public void ShowJPanel(JPanel p) {
+        Tablero.removeAll();  // Limpia todos los componentes en el contenedor Tablero
+        Tablero.add(p);  // Agrega el nuevo panel al contenedor
+        Tablero.revalidate();  // Vuelve a validar la disposición del contenedor
+        Tablero.repaint();  // Vuelve a pintar el contenedor
+    }
 }

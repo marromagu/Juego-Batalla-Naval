@@ -60,7 +60,7 @@ public final class ConexionCliente {
             //Mandamos al servidor el Usuario y la contraseña
             flujo_salida.writeUTF(usuario);
             flujo_salida.writeInt(contraseña);
-            
+
             //Esperamos confirmacion de contraseña
             valido = flujo_entrada.readBoolean();
             System.out.println("Confirmacion de Contraseña " + valido);
@@ -119,7 +119,7 @@ public final class ConexionCliente {
         return false;
     }
 
-    public void hacerDisparo(int id_partida, int x, int y) {
+    public boolean hacerDisparo(int id_partida, int x, int y) {
         try {
             flujo_salida.writeInt(3);
             flujo_salida.writeInt(getMisDatos().getIdJugador());
@@ -127,10 +127,12 @@ public final class ConexionCliente {
             flujo_salida.writeInt(x);
             flujo_salida.writeInt(y);
             misDatos.getListaPartidasMiTurno().remove(id_partida);
+            return flujo_entrada.readBoolean();
         } catch (IOException ex) {
             System.out.println("--> ERROR: Al Hacer Disparo: " + ex.getMessage());
 
         }
+        return false;
     }
 
     public void actualizarListaDePartidasTerminadas() {

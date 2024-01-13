@@ -72,6 +72,7 @@ public class Ventana_EmpezarPartida extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        TablaJugadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane2.setViewportView(TablaJugadores);
 
         javax.swing.GroupLayout BackGroundLayout = new javax.swing.GroupLayout(BackGround);

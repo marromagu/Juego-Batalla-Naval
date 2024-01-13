@@ -9,6 +9,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.Scanner;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -68,6 +69,7 @@ public class Ventana_VerPartidaTerminada extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        TablaPartidas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane2.setViewportView(TablaPartidas);
 
         javax.swing.GroupLayout BackGroundLayout = new javax.swing.GroupLayout(BackGround);
@@ -107,12 +109,12 @@ public class Ventana_VerPartidaTerminada extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void llenarTablaConDatos() {
-        DefaultTableModel model = (DefaultTableModel) TablaPartidas.getModel();
-        model.setRowCount(0); // Limpia la tabla antes de agregar nuevos datos
-        
+        DefaultTableModel modelo = (DefaultTableModel) TablaPartidas.getModel();
+        modelo.setRowCount(0); // Limpia la tabla antes de agregar nuevos datos
+
         //Actualizamos la lista de partidas
         miApp.getMiCliente().actualizarListaDePartidasTerminadas();
-        
+
         // Obtén la lista de partidas terminadas desde la aplicación
         HashMap<Integer, String> partidas = miApp.getMiCliente().getMisDatos().getListaPartidaTermindas();
 
@@ -129,10 +131,16 @@ public class Ventana_VerPartidaTerminada extends javax.swing.JPanel {
             String nombreUltimoTurno = sc.next();
 
             // Agrega los datos a la tabla
-            model.addRow(new Object[]{idPartida, nombreJugador1, nombreJugador2, nombreGanador, nombreUltimoTurno});
+            modelo.addRow(new Object[]{idPartida, nombreJugador1, nombreJugador2, nombreGanador, nombreUltimoTurno});
 
             sc.close();
         }
+        // Asegurarse de que la Tabla se actualiza
+        modelo.fireTableDataChanged();
+
+        // Centrar datos en la tabla
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
         TablaPartidas.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

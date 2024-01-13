@@ -5,6 +5,7 @@
 package Ventanas;
 
 import App.AppModificada;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,10 +14,11 @@ import App.AppModificada;
 public class Ventana_VerPartidaMiTurnoDisparar extends javax.swing.JPanel {
 
     private final AppModificada miApp; // Agrega una referencia a la instancia de Ventana_Principal
-    private int id;
+    private int id_partida;
 
     /**
      * Creates new form VentanaOpcionesEmpezarPartida
+     *
      * @param app
      * @param id_partida
      */
@@ -24,8 +26,8 @@ public class Ventana_VerPartidaMiTurnoDisparar extends javax.swing.JPanel {
         initComponents();
         this.miApp = app; // Asigna la referencia de Ventana_Principal
         initializeButton();
-        IdPartidaJLabel.setText("Id Partida: " + id_partida);
-        this.id = id_partida;
+        Titulo.setText("Id Partida: " + id_partida);
+        this.id_partida = id_partida;
 
     }
 
@@ -40,102 +42,175 @@ public class Ventana_VerPartidaMiTurnoDisparar extends javax.swing.JPanel {
 
         BackGround = new javax.swing.JPanel();
         jButtonBack = new javax.swing.JButton();
-        IdPartidaJLabel = new javax.swing.JLabel();
-        CoordenadasXJTextField = new javax.swing.JTextField();
-        DispararJButton = new javax.swing.JButton();
-        CoordenadasYJTextField = new javax.swing.JTextField();
-        CoordenadasYJLabel = new javax.swing.JLabel();
-        CoordenadasXJLabel = new javax.swing.JLabel();
+        CoordenadaX = new javax.swing.JTextField();
+        CoordenadaY = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        BotonDisparo = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        Titulo = new javax.swing.JLabel();
+        Tablero = new javax.swing.JPanel();
 
+        BackGround.setPreferredSize(new java.awt.Dimension(700, 500));
+
+        jButtonBack.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 24)); // NOI18N
+        jButtonBack.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack.setText("Atras");
-
-        DispararJButton.setText("Disparar");
-        DispararJButton.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DispararJButtonActionPerformed(evt);
+                jButtonBackActionPerformed(evt);
             }
         });
 
-        CoordenadasYJLabel.setText("Coordenada Y");
+        jLabel1.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Coordenada X");
 
-        CoordenadasXJLabel.setText("Coordenada X");
+        jLabel2.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Coordenada Y");
+
+        BotonDisparo.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
+        BotonDisparo.setForeground(new java.awt.Color(255, 255, 255));
+        BotonDisparo.setText("Disparar");
+        BotonDisparo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonDisparoActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\mario\\Documents\\0A_DAM-III\\1. Hundir La Flota MRA\\Batalla_Naval_Cliente\\src\\main\\resources\\canon.png")); // NOI18N
+
+        Titulo.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 24)); // NOI18N
+        Titulo.setForeground(new java.awt.Color(255, 255, 255));
+        Titulo.setText("Partida: ");
+
+        javax.swing.GroupLayout TableroLayout = new javax.swing.GroupLayout(Tablero);
+        Tablero.setLayout(TableroLayout);
+        TableroLayout.setHorizontalGroup(
+            TableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+        TableroLayout.setVerticalGroup(
+            TableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout BackGroundLayout = new javax.swing.GroupLayout(BackGround);
         BackGround.setLayout(BackGroundLayout);
         BackGroundLayout.setHorizontalGroup(
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
-                .addGap(0, 360, Short.MAX_VALUE)
-                .addComponent(jButtonBack))
             .addGroup(BackGroundLayout.createSequentialGroup()
-                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(BackGroundLayout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(DispararJButton))
-                    .addGroup(BackGroundLayout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(CoordenadasYJLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(CoordenadasYJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
-                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(IdPartidaJLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonBack))
+                    .addGroup(BackGroundLayout.createSequentialGroup()
+                        .addComponent(Tablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(BackGroundLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(CoordenadasXJLabel)))
-                        .addGap(18, 18, 18)
-                        .addComponent(CoordenadasXJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(83, 83, 83)
+                                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(BackGroundLayout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(CoordenadaX))
+                                    .addGroup(BackGroundLayout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(BotonDisparo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(CoordenadaY)))))
+                            .addGroup(BackGroundLayout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)))))
+                .addContainerGap())
         );
         BackGroundLayout.setVerticalGroup(
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
+            .addGroup(BackGroundLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(IdPartidaJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CoordenadasXJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CoordenadasXJLabel))
-                .addGap(18, 18, 18)
-                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(BackGroundLayout.createSequentialGroup()
-                        .addComponent(CoordenadasYJLabel)
-                        .addGap(48, 48, 48)
-                        .addComponent(DispararJButton)
-                        .addGap(71, 71, 71)
-                        .addComponent(jButtonBack))
-                    .addComponent(CoordenadasYJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(99, 99, 99)
+                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(CoordenadaX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CoordenadaY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addComponent(BotonDisparo))
+                    .addComponent(Tablero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
+                .addComponent(jButtonBack)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BackGround, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(BackGround, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BackGround, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(BackGround, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void DispararJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DispararJButtonActionPerformed
-        int coordenadaX = Integer.parseInt(CoordenadasXJTextField.getText());
-        int coordenadaY = Integer.parseInt(CoordenadasYJTextField.getText());
-        miApp.getMiCliente().hacerDisparo(id, coordenadaX, coordenadaY);
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
         miApp.ShowJPanel(new Ventana_VerPartidaMiTurno(miApp));
-    }//GEN-LAST:event_DispararJButtonActionPerformed
+    }//GEN-LAST:event_jButtonBackActionPerformed
+
+    private void BotonDisparoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonDisparoActionPerformed
+        try {
+            // Obtener el contenido de los campos de texto
+            String coordenadaXText = CoordenadaX.getText();
+            String coordenadaYText = CoordenadaY.getText();
+
+            // Convertir las cadenas a enteros
+            int x = Integer.parseInt(coordenadaXText);
+            int y = Integer.parseInt(coordenadaYText);
+            boolean disparo;
+
+            // Realizar la operación con los valores numéricos
+            disparo = miApp.getMiCliente().hacerDisparo(id_partida, x, y);
+            // Mostrar mensaje emergente según el resultado del disparo
+            if (disparo) {
+                JOptionPane.showMessageDialog(this, "¡Tocado!", "Resultado del Disparo", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Agua", "Resultado del Disparo", JOptionPane.INFORMATION_MESSAGE);
+            }
+             miApp.ShowJPanel(new Ventana_VerPartidaMiTurno(miApp));
+        } catch (NumberFormatException e) {
+            // Manejar la excepción si ocurre un error al convertir a entero
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese números válidos en las coordenadas.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_BotonDisparoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackGround;
-    private javax.swing.JLabel CoordenadasXJLabel;
-    private javax.swing.JTextField CoordenadasXJTextField;
-    private javax.swing.JLabel CoordenadasYJLabel;
-    private javax.swing.JTextField CoordenadasYJTextField;
-    private javax.swing.JButton DispararJButton;
-    private javax.swing.JLabel IdPartidaJLabel;
+    private javax.swing.JButton BotonDisparo;
+    private javax.swing.JTextField CoordenadaX;
+    private javax.swing.JTextField CoordenadaY;
+    private javax.swing.JPanel Tablero;
+    private javax.swing.JLabel Titulo;
     private javax.swing.JButton jButtonBack;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 
     private void initializeButton() {
