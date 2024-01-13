@@ -147,9 +147,9 @@ public final class ConexionCliente {
     }
 
     public int crearNuevaPartida(int id_Jugador2) {
-        int id_partida = 7;
+        int id_partida = 0;
         try {
-            flujo_salida.writeInt(5);
+            flujo_salida.writeInt(7);
             flujo_salida.writeInt(misDatos.getIdJugador());
             flujo_salida.writeInt(id_Jugador2);
             id_partida = flujo_entrada.readInt();

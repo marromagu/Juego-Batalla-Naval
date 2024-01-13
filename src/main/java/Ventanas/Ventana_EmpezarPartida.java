@@ -19,10 +19,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Ventana_EmpezarPartida extends javax.swing.JPanel {
 
-    private AppModificada miApp; // Agrega una referencia a la instancia de AppModificada
+    private final AppModificada miApp; // Agrega una referencia a la instancia de AppModificada
 
     /**
      * Creates new form VentanaOpcionesEmpezarPartida
+     *
+     * @param app
      */
     public Ventana_EmpezarPartida(AppModificada app) {
         initComponents();
@@ -150,9 +152,12 @@ public class Ventana_EmpezarPartida extends javax.swing.JPanel {
     }
 
     private void mostrarVentana(int idJugador2) {
-        JOptionPane.showMessageDialog(this, "Partida empezada contra: " + idJugador2);
-        //int id_partida = 
-        miApp.getMiCliente().crearNuevaPartida(idJugador2);
-        // miApp.ShowJPanel(new Ventana_EmpezarPartidaJugar(miApp, id_partida));
+        if (idJugador2 == miApp.getMiCliente().getMisDatos().getIdJugador()) {
+            JOptionPane.showMessageDialog(this, "No puedes Jugar una partida contigo mismo.");
+        } else {
+            JOptionPane.showMessageDialog(this, "Partida empezada contra: " + idJugador2);
+            int id_partida = miApp.getMiCliente().crearNuevaPartida(idJugador2);
+            miApp.ShowJPanel(new Ventana_EmpezarPartidaJugar(miApp, id_partida));
+        }
     }
 }
