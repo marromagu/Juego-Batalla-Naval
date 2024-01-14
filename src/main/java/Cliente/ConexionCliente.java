@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author mario
  */
-public final class ConexionCliente {
+public final class ConexionCliente extends Thread {
 
     private static ConexionCliente miCliente = null;
     private DatosJugador misDatos;
@@ -33,10 +33,10 @@ public final class ConexionCliente {
     }
 
     public ConexionCliente() {
-        establecerConexion();
+        establecerConexionConServidor();
     }
 
-    public void establecerConexion() {
+    public void establecerConexionConServidor() {
         final String HOST = "localhost";
         final int PUERTO = 2001;
         try {

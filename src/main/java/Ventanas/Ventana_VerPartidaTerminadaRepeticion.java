@@ -31,6 +31,9 @@ public class Ventana_VerPartidaTerminadaRepeticion extends javax.swing.JPanel {
         id = Integer.parseInt(id_partida);
         mostarListaDeDisparos();
         BotonSiguiente.setEnabled(true);
+        // Hacer que el JTextArea no sea editable
+        Log_DeDisparos.setEditable(false);
+
     }
 
     /**
@@ -56,6 +59,8 @@ public class Ventana_VerPartidaTerminadaRepeticion extends javax.swing.JPanel {
         Log_DeDisparos.setColumns(20);
         Log_DeDisparos.setRows(5);
         jScrollPane1.setViewportView(Log_DeDisparos);
+
+        jLabel1.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 24)); // NOI18N
 
         BotonSiguiente.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 24)); // NOI18N
         BotonSiguiente.setForeground(new java.awt.Color(255, 255, 255));
@@ -123,12 +128,13 @@ public class Ventana_VerPartidaTerminadaRepeticion extends javax.swing.JPanel {
 
     private void BotonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSiguienteActionPerformed
         ArrayList<String> disparosRepeticion = miApp.getMiCliente().repeticion(id);
+
         if (i < disparosRepeticion.size()) {
             // Muestra el elemento actual y pasa al siguiente índice
             Log_DeDisparos.append(disparosRepeticion.get(i++) + "\n");
         } else {
             // Muestra un mensaje cuando se alcanza el final del array
-            Log_DeDisparos.append("Fin de la lista\n");
+            Log_DeDisparos.append("- Fin de la lista- \n");
 
             // Desactiva el botón "Siguiente" al final de la lista
             BotonSiguiente.setEnabled(false);

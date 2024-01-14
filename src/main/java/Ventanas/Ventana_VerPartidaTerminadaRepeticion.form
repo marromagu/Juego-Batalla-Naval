@@ -98,6 +98,11 @@
           </SubComponents>
         </Container>
         <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Copperplate Gothic Light" size="24" style="1"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JToggleButton" name="BotonSiguiente">
           <Properties>

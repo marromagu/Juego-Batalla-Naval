@@ -6,6 +6,7 @@ package Ventanas;
 
 import App.AppModificada;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -47,9 +48,9 @@ public class Ventana_EmpezarPartidaJugarTablero extends javax.swing.JPanel {
 
         jScrollPane2.setViewportView(jTextPane1);
 
-        setPreferredSize(new java.awt.Dimension(700, 500));
+        setPreferredSize(new java.awt.Dimension(300, 300));
 
-        BackGround.setPreferredSize(new java.awt.Dimension(700, 500));
+        BackGround.setPreferredSize(new java.awt.Dimension(300, 300));
 
         javax.swing.GroupLayout BackGroundLayout = new javax.swing.GroupLayout(BackGround);
         BackGround.setLayout(BackGroundLayout);
@@ -66,11 +67,11 @@ public class Ventana_EmpezarPartidaJugarTablero extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BackGround, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addComponent(BackGround, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BackGround, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addComponent(BackGround, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -92,10 +93,12 @@ public class Ventana_EmpezarPartidaJugarTablero extends javax.swing.JPanel {
             for (int j = 0; j < 10; j++) {
                 botones[i][j] = new JButton();
                 botones[i][j].setBackground(Color.WHITE);
+                botones[i][j].setPreferredSize(new Dimension(1, 1)); // Ajusta el tamaño preferido
                 botones[i][j].addActionListener(new BotonListener(i, j));
                 BackGround.add(botones[i][j]);
             }
         }
+
     }
 
     // ActionListener para los botones
@@ -113,6 +116,7 @@ public class Ventana_EmpezarPartidaJugarTablero extends javax.swing.JPanel {
         public void actionPerformed(ActionEvent e) {
             // Acción a realizar cuando se hace clic en un botón
             JOptionPane.showMessageDialog(Ventana_EmpezarPartidaJugarTablero.this, "Fila: " + fila + ", Columna: " + columna);
+            
         }
     }
 

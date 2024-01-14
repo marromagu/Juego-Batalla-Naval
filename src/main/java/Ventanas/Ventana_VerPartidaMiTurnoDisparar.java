@@ -5,6 +5,8 @@
 package Ventanas;
 
 import App.AppModificada;
+import java.awt.Color;
+import java.awt.GridLayout;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,6 +30,18 @@ public class Ventana_VerPartidaMiTurnoDisparar extends javax.swing.JPanel {
         initializeButton();
         Titulo.setText("Id Partida: " + id_partida);
         this.id_partida = id_partida;
+
+        // Crear una instancia de la clase Ventana_EmpezarPartidaJugarTablero
+        Ventana_EmpezarPartidaJugarTablero tablero = new Ventana_EmpezarPartidaJugarTablero(app);
+
+        // Configurar el GridLayout para el tablero
+        tablero.setLayout(new GridLayout(10, 10));
+
+        // Establecer el color de fondo del tablero
+        tablero.setBackground(Color.WHITE);
+
+        // Añadir el tablero al contenedor Tablero
+        ShowJTablero();
 
     }
 
@@ -220,5 +234,17 @@ public class Ventana_VerPartidaMiTurnoDisparar extends javax.swing.JPanel {
             // Vuelve a la ventana Opcion 2 Ver Partida
             miApp.ShowJPanel(new Ventana_VerPartidaMiTurno(miApp));
         });
+    }
+    
+    // Método para mostrar un panel en el contenedor del tablero
+    public void ShowJTablero() {
+        Ventana_EmpezarPartidaJugarTablero miTablero = new Ventana_EmpezarPartidaJugarTablero(miApp);
+        miTablero.setSize(300, 300);
+        miTablero.setLocation(0, 0);
+
+        Tablero.removeAll();
+        Tablero.add(miTablero, new GridLayout(10, 10));
+        Tablero.revalidate();
+        Tablero.repaint();
     }
 }

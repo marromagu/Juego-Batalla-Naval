@@ -7,7 +7,7 @@ package Ventanas;
 import App.AppModificada;
 import java.awt.Color;
 import java.awt.GridLayout;
-import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +17,7 @@ public class Ventana_EmpezarPartidaJugar extends javax.swing.JPanel {
 
     private final AppModificada miApp; // Agrega una referencia a la instancia de Ventana_Principal
     private final int id_partida;
+    private final int idJugador2;
 
     /**
      * Creates new form VentanaOpcionesEmpezarPartida
@@ -24,10 +25,11 @@ public class Ventana_EmpezarPartidaJugar extends javax.swing.JPanel {
      * @param app
      * @param id_partida
      */
-    public Ventana_EmpezarPartidaJugar(AppModificada app, int id_partida) {
+    public Ventana_EmpezarPartidaJugar(AppModificada app, int id_partida, int idJugador2) {
         initComponents();
         this.miApp = app;
         this.id_partida = id_partida;
+        this.idJugador2 = idJugador2;
 
         String textoActual = Titulo.getText();
         String nuevoTexto = textoActual + this.id_partida;
@@ -43,7 +45,7 @@ public class Ventana_EmpezarPartidaJugar extends javax.swing.JPanel {
         tablero.setBackground(Color.WHITE);
 
         // Añadir el tablero al contenedor Tablero
-        ShowJPanel(tablero);
+        ShowJTablero();
     }
 
     /**
@@ -106,15 +108,17 @@ public class Ventana_EmpezarPartidaJugar extends javax.swing.JPanel {
         Titulo.setForeground(new java.awt.Color(255, 255, 255));
         Titulo.setText("Partida: ");
 
+        Tablero.setPreferredSize(new java.awt.Dimension(300, 300));
+
         javax.swing.GroupLayout TableroLayout = new javax.swing.GroupLayout(Tablero);
         Tablero.setLayout(TableroLayout);
         TableroLayout.setHorizontalGroup(
             TableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         TableroLayout.setVerticalGroup(
             TableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 381, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout BackGroundLayout = new javax.swing.GroupLayout(BackGround);
@@ -124,41 +128,40 @@ public class Ventana_EmpezarPartidaJugar extends javax.swing.JPanel {
             .addGroup(BackGroundLayout.createSequentialGroup()
                 .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(BackGroundLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(CoordenadaX))
+                            .addGroup(BackGroundLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(BotonDisparo)
+                                    .addComponent(CoordenadaY, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 342, Short.MAX_VALUE)
                         .addComponent(jButtonBack))
                     .addGroup(BackGroundLayout.createSequentialGroup()
-                        .addComponent(Tablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(BackGroundLayout.createSequentialGroup()
-                                .addGap(83, 83, 83)
-                                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(BackGroundLayout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(CoordenadaX))
-                                    .addGroup(BackGroundLayout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(18, 18, 18)
-                                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(BotonDisparo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(CoordenadaY)))))
-                            .addGroup(BackGroundLayout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)))))
+                        .addComponent(Tablero, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         BackGroundLayout.setVerticalGroup(
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackGroundLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(BackGroundLayout.createSequentialGroup()
-                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(99, 99, 99)
+                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Tablero, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonBack, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
                         .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(CoordenadaX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -167,10 +170,7 @@ public class Ventana_EmpezarPartidaJugar extends javax.swing.JPanel {
                             .addComponent(CoordenadaY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
-                        .addComponent(BotonDisparo))
-                    .addComponent(Tablero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
-                .addComponent(jButtonBack)
+                        .addComponent(BotonDisparo)))
                 .addContainerGap())
         );
 
@@ -195,7 +195,31 @@ public class Ventana_EmpezarPartidaJugar extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonBackActionPerformed
 
     private void BotonDisparoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonDisparoActionPerformed
-        // TODO add your handling code here:
+
+        try {
+            // Obtener el contenido de los campos de texto
+            String coordenadaXText = CoordenadaX.getText();
+            String coordenadaYText = CoordenadaY.getText();
+
+            // Convertir las cadenas a enteros
+            int x = Integer.parseInt(coordenadaXText);
+            int y = Integer.parseInt(coordenadaYText);
+            boolean disparo;
+
+            // Realizar la operación con los valores numéricos
+            disparo = miApp.getMiCliente().hacerDisparo(id_partida, x, y);
+            // Mostrar mensaje emergente según el resultado del disparo
+            if (disparo) {
+                JOptionPane.showMessageDialog(this, "¡Tocado!", "Resultado del Disparo", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Agua", "Resultado del Disparo", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+            // Manejar la excepción si ocurre un error al convertir a entero
+            CoordenadaX.setText("");
+            CoordenadaY.setText("");
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese números válidos en las coordenadas.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_BotonDisparoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -214,10 +238,14 @@ public class Ventana_EmpezarPartidaJugar extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     // Método para mostrar un panel en el contenedor del tablero
-    public void ShowJPanel(JPanel p) {
-        Tablero.removeAll();  // Limpia todos los componentes en el contenedor Tablero
-        Tablero.add(p);  // Agrega el nuevo panel al contenedor
-        Tablero.revalidate();  // Vuelve a validar la disposición del contenedor
-        Tablero.repaint();  // Vuelve a pintar el contenedor
+    public void ShowJTablero() {
+        Ventana_EmpezarPartidaJugarTablero miTablero = new Ventana_EmpezarPartidaJugarTablero(miApp);
+        miTablero.setSize(300, 300);
+        miTablero.setLocation(0, 0);
+
+        Tablero.removeAll();
+        Tablero.add(miTablero, new GridLayout(10, 10));
+        Tablero.revalidate();
+        Tablero.repaint();
     }
 }

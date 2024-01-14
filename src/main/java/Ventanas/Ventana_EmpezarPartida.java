@@ -158,7 +158,7 @@ public class Ventana_EmpezarPartida extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(this, "Partida empezada contra: " + idJugador2);
             int id_partida = miApp.getMiCliente().crearNuevaPartida(idJugador2);
-            miApp.ShowJPanel(new Ventana_EmpezarPartidaJugar(miApp, id_partida));
+            miApp.ShowJPanel(new Ventana_EmpezarPartidaJugar(miApp, id_partida, idJugador2));
         }
     }
 }
