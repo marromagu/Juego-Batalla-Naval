@@ -114,7 +114,7 @@ public class Ventana_EmpezarPartidaJugar extends javax.swing.JPanel {
         Tablero.setLayout(TableroLayout);
         TableroLayout.setHorizontalGroup(
             TableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 303, Short.MAX_VALUE)
         );
         TableroLayout.setVerticalGroup(
             TableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,26 +128,28 @@ public class Ventana_EmpezarPartidaJugar extends javax.swing.JPanel {
             .addGroup(BackGroundLayout.createSequentialGroup()
                 .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(BackGroundLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(CoordenadaX))
-                            .addGroup(BackGroundLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(BotonDisparo)
-                                    .addComponent(CoordenadaY, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 342, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonBack))
                     .addGroup(BackGroundLayout.createSequentialGroup()
-                        .addComponent(Tablero, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+                        .addComponent(Tablero, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(BackGroundLayout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
+                                .addGap(0, 126, Short.MAX_VALUE)
+                                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
+                                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel1))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(CoordenadaX, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(CoordenadaY, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(BotonDisparo, javax.swing.GroupLayout.Alignment.TRAILING))))))
                 .addContainerGap())
         );
         BackGroundLayout.setVerticalGroup(
@@ -155,22 +157,24 @@ public class Ventana_EmpezarPartidaJugar extends javax.swing.JPanel {
             .addGroup(BackGroundLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Tablero, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonBack, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
+                    .addComponent(Tablero, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
+                    .addGroup(BackGroundLayout.createSequentialGroup()
                         .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(CoordenadaX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel3)
+                            .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CoordenadaX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(CoordenadaY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
-                        .addComponent(BotonDisparo)))
+                        .addComponent(BotonDisparo)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(72, 72, 72)
+                .addComponent(jButtonBack)
                 .addContainerGap())
         );
 
@@ -214,6 +218,8 @@ public class Ventana_EmpezarPartidaJugar extends javax.swing.JPanel {
             } else {
                 JOptionPane.showMessageDialog(this, "Agua", "Resultado del Disparo", JOptionPane.INFORMATION_MESSAGE);
             }
+            CoordenadaX.setText("");
+            CoordenadaY.setText("");
         } catch (NumberFormatException e) {
             // Manejar la excepción si ocurre un error al convertir a entero
             CoordenadaX.setText("");
