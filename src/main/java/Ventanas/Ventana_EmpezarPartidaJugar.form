@@ -106,9 +106,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="Tablero" alignment="0" pref="381" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="Titulo" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="Titulo" max="32767" attributes="0"/>
+                              <Component id="jLabel3" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -190,7 +190,7 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\mario\Documents\0A_DAM-III\1. Hundir La Flota MRA\Batalla_Naval_Cliente\src\main\resources\canon.png"/>
+              <Image iconType="3" name="/canon.png"/>
             </Property>
           </Properties>
         </Component>
